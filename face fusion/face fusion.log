@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.18)  19 JUL 2017 13:26
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.18)  9 AUG 2017 21:50
 entering extended mode
-**E:/work/face/face*fusion/face*fusion.tex
-("E:/work/face/face fusion/face fusion.tex"
+**E:/work/face/face*fusion*-*副本/face*fusion.tex
+("E:/work/face/face fusion - 副本/face fusion.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
-("E:\work\face\face fusion\llncs.cls"
+("E:\work\face\face fusion - 副本\llncs.cls"
 Document Class: llncs 2013/09/27 v2.18 
  LaTeX document class for Lecture Notes in Computer Science
 (d:\software\CTEX\MiKTeX\tex\latex\base\article.cls
@@ -72,9 +72,10 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box51
 \multicol@sort@counter=\count95
 )
-("E:\work\face\face fusion\aliascnt.sty"
+("E:\work\face\face fusion - 副本\aliascnt.sty"
 Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
- ("E:\work\face\face fusion\remreset.sty"))
+
+("E:\work\face\face fusion - 副本\remreset.sty"))
 \c@chapter=\count96
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
@@ -125,7 +126,8 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \c@solution=\count114
 \c@remark=\count115
 \headlineindent=\dimen123
-) (d:\software\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
+)
+(d:\software\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (d:\software\CTEX\MiKTeX\tex\latex\graphics\keyval.sty
@@ -249,7 +251,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-("E:\work\face\face fusion\face fusion.aux")
+("E:\work\face\face fusion - 副本\face fusion.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
@@ -306,15 +308,15 @@ File: images/pipeline.png Graphic file (type png)
 <use images/pipeline.png>
 Package pdftex.def Info: images/pipeline.png used on input line 62.
 (pdftex.def)             Requested size: 346.89621pt x 150.32198pt.
- [3 <E:/work/face/face fusion/images/pipeline.png>]
-[4] <images/extract.png, id=25, 984.67876pt x 216.05719pt>
+ [3 <E:/work/face/face fusion - 副本/images/pipeline.png>] [4] <images/extrac
+t.png, id=25, 984.67876pt x 216.05719pt>
 File: images/extract.png Graphic file (type png)
 
 <use images/extract.png>
 Package pdftex.def Info: images/extract.png used on input line 83.
 (pdftex.def)             Requested size: 346.89621pt x 76.11565pt.
- [5 <E:/work/face/face fusion/images/extract.png>]
-<images/labelmask.png, id=31, 914.66719pt x 362.10281pt>
+ [5 <E:/work/face/face fusion - 副本/images/extract.png>] <images/labelmask.p
+ng, id=31, 914.66719pt x 362.10281pt>
 File: images/labelmask.png Graphic file (type png)
 
 <use images/labelmask.png>
@@ -329,8 +331,9 @@ Package pdftex.def Info: images/3cmp.png used on input line 132.
 
 Underfull \vbox (badness 1210) has occurred while \output is active []
 
- [6 <E:/work/face/face fusion/images/labelmask.png>] [7 <E:/work/face/face fusi
-on/images/3cmp.png>] <images/pro.png, id=42, 1296.34312pt x 260.47313pt>
+ [6 <E:/work/face/face fusion - 副本/images/labelmask.png>] [7 <E:/work/face/
+face fusion - 副本/images/3cmp.png>] <images/pro.png, id=42, 1296.34312pt x 2
+60.47313pt>
 File: images/pro.png Graphic file (type png)
 
 <use images/pro.png>
@@ -348,49 +351,50 @@ File: images/thd1.png Graphic file (type png)
 <use images/thd1.png>
 Package pdftex.def Info: images/thd1.png used on input line 157.
 (pdftex.def)             Requested size: 346.89621pt x 70.28622pt.
- [8 <E:/work/face/face fusion/images/pro.png> <E:/work/face/face fusion/images/
-detail.png> <E:/work/face/face fusion/images/thd1.png>]
-<images/thd2.png, id=49, 1105.88156pt x 233.37187pt>
+ [8 <E:/work/face/face fusion - 副本/images/pro.png> <E:/work/face/face fusio
+n - 副本/images/detail.png> <E:/work/face/face fusion - 副本/images/thd1.pn
+g>] <images/thd2.png, id=49, 1105.88156pt x 233.37187pt>
 File: images/thd2.png Graphic file (type png)
- <use images/thd2.png>
+
+<use images/thd2.png>
 Package pdftex.def Info: images/thd2.png used on input line 164.
 (pdftex.def)             Requested size: 346.89621pt x 73.20271pt.
-
-<images/vs.png, id=50, 869.49844pt x 556.32843pt>
+ <images/vs.png, id=50, 869.49844pt x 556.32843pt>
 File: images/vs.png Graphic file (type png)
- <use images/vs.png>
+
+<use images/vs.png>
 Package pdftex.def Info: images/vs.png used on input line 171.
 (pdftex.def)             Requested size: 346.89621pt x 221.95866pt.
- [9 <E:/work/face/face fusion/images/thd2.png> <E:/work/face/face fusion/images
-/vs.png>]
+ [9 <E:/work/face/face fusion - 副本/images/thd2.png> <E:/work/face/face fusi
+on - 副本/images/vs.png>]
 Missing character: There is no � in font cmr9!
 Missing character: There is no � in font cmr9!
 Missing character: There is no � in font cmr9!
 Missing character: There is no � in font cmr9!
-
-[10] [11] ("E:\work\face\face fusion\face fusion.aux") ) 
+ [10] [11]
+("E:\work\face\face fusion - 副本\face fusion.aux") ) 
 Here is how much of TeX's memory you used:
  2641 strings out of 495354
- 31956 string characters out of 3183355
+ 32073 string characters out of 3183355
  95201 words of memory out of 3000000
  5772 multiletter control sequences out of 15000+200000
  10964 words of font info for 46 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,8n,24p,1982b,343s stack positions out of 5000i,500n,10000p,200000b,50000s
-<d:/software/CTEX/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/software/CTEX/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx9.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex
-10.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/s
-oftware/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/software/CTEX/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/software/CTEX/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmmi9.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mr10.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/s
-oftware/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/software/CTEX/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/software/CTEX/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmtt9.pfb>
+ 29i,8n,24p,1991b,343s stack positions out of 5000i,500n,10000p,200000b,50000s
+<d:/software/CTEX/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/software/CTEX/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmbx9.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/so
+ftware/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/software/CTEX/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/software/CTEX/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi9.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/so
+ftware/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/software/CTEX/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/software/CTEX/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb><d:/software/CTEX/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmtt9.pfb>
 Output written on "face fusion.pdf" (11 pages, 11229832 bytes).
 PDF statistics:
  107 PDF objects out of 1000 (max. 8388607)
