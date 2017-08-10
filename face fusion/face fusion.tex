@@ -9,6 +9,23 @@
 \usepackage{graphicx}
 \usepackage{clrscode}
 \usepackage{url}
+
+
+
+\usepackage{color}
+
+
+\definecolor{red}{rgb}{1.0,0.0,0.0}
+\definecolor{blue}{rgb}{0.0,0.0,1.0}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+
+
+\newcommand{\comments}[1]{}
+\newcommand{\xj}[1]{\textcolor{red}{(xuejin:#1)}}
+\newcommand{\xjmd}[1]{\textcolor{purple}{#1}}
+
+
+
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 \makeatletter
@@ -27,52 +44,131 @@
 
 
 \begin{abstract}
-Face fusion technology grows more important nowadays. In this paper, We will introduce a method that could fuse features of source face into target face, and target face would still looks natural with its background. Our method contains two steps. First, aligning two faces according to facial landmarks, for which could give us size, location and distribution  of features of two faces. Segmenting two faces into several triangles using Delaunay triangulation, warping the corresponding triangles of two faces into the same shape. Second, reconstructing gradients for new face that we are going to generate, with one face image as target image and reconstructed gradients, we could generate fused face by seamless cloning. There are three ways we tried to reconstruct the gradients, first, composing new gradients by linearly combining gradients of two faces, second,  preserving the larger gradients of two faces, third, constructing new gradients by preserving weaker gradients which is proposed by us.
-\keywords{Face fusion, Facial landmarks, Delaunay triangulation, Seamless clone}
+Face fusion technology grows more important nowadays. In this paper, we introduce a new method that naturally fuses features of the source face into the target face. 
+% and target face would still looks natural with its background. 
+Our method consists of two steps. 
+%
+First, the two faces are aligned according to facial landmarks, which provides size, location and distribution of face features. 
+Segmenting two faces into several triangles using Delaunay triangulation, warping the corresponding triangle mesh of the two faces into the same shape. 
+\xj{What is the relation between the Delaunay triangulations with face features?}
+%
+Second, \xjmd{we reconstruct a new face using a Poisson reconstruction by fusing the gradient fields of the two faces.} \xj{So what is new in your method?}. 
+%
+We provide three ways to reconstruct the gradient field.
+First, composing a new gradient field by linearly combining gradients of the two input faces.
+Second, preserving the larger gradient of each pixel of the two faces.
+Third, constructing a new gradient field by preserving the weaker gradient which is proposed by us. \xj{How do you provide the gradient? the weaker gradient comparing with what?}
+\xj{I did not see any novelty from your abstract.}
+
+
+\keywords{Face fusion, facial landmarks, Delaunay triangulation, seamless cloning}
 \end{abstract}
 
 
 \section{Introduction}
-These years, there is a great need for face editing application. Someone would wonder what would they look like if they have some face features from pop stars, they may make their faces sharper through face editing application. While some other people want to know what would they look like when they grow older. these tasks could be accomplished by face fusion. Progeny appearance prediction is a popular task lately, what if the son of a young couple looks like when he grows up, it is attracting for many people, and this could also be accomplished by face fusion technology.
+These years, there is a great need for face editing application. 
+Someone would wonder what would they look like if they have some face features from pop stars.
+They may make their faces sharper through face editing applications. While some other people want to know what would they look like when they grow older. these tasks could be accomplished by face fusion. 
+%
+Progeny appearance prediction is a popular task lately, what if the son of a young couple looks like when he grows up, it is attracting for many people, and this could also be accomplished by face fusion technology.
 
-As we know, different faces have different features, someone has a shaper face while the shape of other faces are closer to square. There are many ways to build correspondence of two faces. In early years, hand marked features of faces are used to build correspondence of two faces \cite{fbim}, because of the lack of the technology to detect face features automatically, when we align two faces using this method, there are a lot of labour works to do. Most people do not want to mark the features manually. Lately, a five
-feature points based face fusion method \cite{mhf} was proposed, the five feature points are detected automatically, this could really save a lot of time for us, then with these feature points, two faces could be warped and fused into one. In fact, five feature points are not enough to represent a face, when we use the sparse correspondence to generate a new face, the result is weird.
+\xj{Introduce the background or related techniques here. Then discuss the challenges. Why previous does not work. What is the new problem here. }
 
-Given two faces, the face we want to extract its features and fuse its features into the other face named source face, the face which keeps its background and let source face features fuse into self named target face. There are 68 facial landmarks are detected by using an Ensemble of Regression Trees \cite{fld} in our method, thus we know exactly the features and size of the face. Facial landmarks indicate the face structures, in other words, the distribution of face features, while the face gradients indicate the face details. When we fuse two faces, first, we warp two faces to make sure the structures of two faces are the same. Second, we fuse the gradients of two faces, in order to maintain the main features of the source face and illumination information of the target face, we reconstruct the gradients for new face by keeping the larger gradients of the source face and part of lower gradients of the target face, then, we could recover the fused face by seamless cloning \cite{pie}.
+
+As we know, different faces have various features.
+Someone has a shaper face while the shape of other faces are closer to square. 
+There are many ways to build correspondence of two faces. 
+\xj{Why do you talk about correspondences after different face features?}
+%
+In early years, hand marked features of faces are used to build correspondence of two faces \cite{fbim}, because of the lack of automatic face feature detection techniques.
+There are a lot of labour work needed. 
+Most people do not want to mark the features manually. 
+Lately, a five-feature points based face fusion method \cite{mhf} was proposed.
+Five feature points are detected automatically, which could save a lot of time for users.
+Then with these feature points, two faces could be warped and fused into one. 
+In fact, five feature points are not enough to represent a face.
+When we use the sparse correspondence to generate a new face, the result is weird.
+
+Given two faces, the face we want to extract its features and fuse its features into the other face named source face, the face which keeps its background and let source face features fuse into self named target face. 
+There are 68 facial landmarks are detected by using an Ensemble of Regression Trees \cite{fld} in our method, thus we know exactly the features and size of the face. 
+Facial landmarks indicate the face structures, in other words, the distribution of face features, while the face gradients indicate the face details. When we fuse two faces, first, we warp two faces to make sure the structures of two faces are the same. Second, we fuse the gradients of two faces, in order to maintain the main features of the source face and illumination information of the target face, we reconstruct the gradients for new face by keeping the larger gradients of the source face and part of lower gradients of the target face, then, we could recover the fused face by seamless cloning \cite{pie}.
 
 \section{Related work}
-In this section, we summarise existing approaches that is similar to our work.
+In this section, we summarize existing approaches that are related to our work.
 
 \textbf{Face Morphing.} Face morphing is commonly referred as the animated transformation of one digital face image to the other, in most case, the background of the face image is pure in order to make us focus on transition of the face itself.
-
- Beier and Neely \cite{fbim} developed user interface to build the correspondences of two faces by a group of line pairs, the procedure of build correspondences of two faces is tedious and time-consuming, besides, hand-marked features are not precise, after building correspondences, the corresponding pixels are linearly interpolated.  Wolberg \cite{wol} proposed a mesh-based method to build the correspondences of two faces, the correspondences of two faces are referred as meshes instead of line pairs. Karungaru et al. \cite{mhf} detect five feature points as control points, then segment face images into several triangles according to control points, next warp the face images according to corresponding triangles. These face morphing methods have a different way in building correspondences, Their aim is creating a seamless transition from one face to the other.
+%
+ Beier and Neely \cite{fbim} developed a user interface to build correspondences of two faces by a group of line pairs. However, this procedure is tedious and time-consuming.
+ Besides, hand-marked features are not precise.
+ After building correspondences, the corresponding pixels are linearly interpolated.  Wolberg \cite{wol} proposed a mesh-based method to build correspondences of two faces, the correspondences of two faces are referred as meshes instead of line pairs. Karungaru et al. \cite{mhf} detect five feature points as control points, then segment face images into several triangles according to control points, next warp the face images according to corresponding triangles. 
+ These face morphing methods have a different way in building correspondences.
+ Their aim is creating a seamless transition from one face to the other.
+ \xj{Not only talk about the correspondences here. The key point is how different of the morphing technique and your method. Based on my understanding, you also require a correspondence extraction step. So what is the difference? }
 
 \textbf{Face Swapping.} Face swapping is also known as face replacement, means transferring a face from a source photo onto a face appearing in a target photo in order to generate a new genuine face.
+\xj{You solve the same problem, right? If not, discuss the main difference. }
+%
+The most early work for face swapping is \cite{exchface}, but the results are not that realistic. 
+Later, the results are better \cite{de1}\cite{de2}\cite{de3}\cite{de4} and mainly used for deidentification. \xj{What is deidentificaation?}
+The main problem for face swapping is pose variation, most works solve this problem by using 3D models \cite{de3}\cite{3d1}\cite{onseg}. Nirkin et al. \cite{onseg} transfer the face from the source image onto the target image using a 3D face model, they first detect facial landmarks used to establish 3D pose and facial expression for 3D face shape, then use a FCN to segment the visible parts of faces from their context and occlusions, at last, source face is blended-in with the target context using image seamless cloning \cite{pie}.
+This step would fail when blending very different facial hues.
+\xj{what is different in your method?}
+ Korshunova et al. \cite{faceswapping} propose a network to generate a source face that could replace the face in target image.
+ One network could only generate faces of the same type, for example, a net named CageNet could only generate the face of Nicolas Cage. 
+ Those two methods mentioned above may greatly change the lightning condition of the face on the target image because they just transfer the source face onto the target image, but not containing any information of the target face. 
+ Bitouk et al. present a system for automatic  face replacement in images, given a target face image, the system would retrieve a face with similar pose, lightning and color condition, then use such a face to replace the face on the target image, the limitation of the source face is clear, it must have a similar pose and lightning condition with the target face. 
+ %
+ The main difference between face swapping and our task is that we want keep some features of the target face but not to replace the target face with the source face, how to fuse the features of the source faces into the target faces is our main consideration.
+ \xj{So face morphing problem is similar because both of you and face morphing should keep the features of two faces. }
 
-The most early work for face swapping is \cite{exchface}, but the results are not that realistic. Later, the results are better \cite{de1}\cite{de2}\cite{de3}\cite{de4} and mainly used for deidentification. The main problem for face swapping is pose variation, most works solve this problem by using 3D models \cite{de3}\cite{3d1}\cite{onseg}. Nirkin et al. \cite{onseg} transfer the face from the source image onto the target image using a 3D face model, they first detect facial landmarks used to establish 3D pose and facial expression for 3D face shape, then use a FCN to segment the visible parts of faces from their context and occlusions, at last, source face is blended-in with the target context using image seamless cloning \cite{pie}, this step would fail when blending very different facial hues. Korshunova et al. \cite{faceswapping} propose a network to generate a source face that could replace the face in target image, one network could only generate faces of the same type, for example, a net named CageNet could only generate the face of Nicolas Cage. Those two methods mentioned above may greatly change the lightning condition of the face on the target image because they just transfer the source face onto the target image, but not containing any information of the target face. Bitouk et al. present a system for automatic  face replacement in images, given a target face image, the system would retrieve a face with similar pose, lightning and color condition, then use such a face to replace the face on the target image, the limitation of the source face is clear, it must have a similar pose and lightning condition with the target face. The main difference between face swapping and our task is that we want keep some features of the target face but not to replace the target face with the source face, how to fuse the features of the source faces into the target faces is our main consideration.
+
 
 \section{Fusing features of the source face into the target face }
-Our task is to fuse features of source face into target face, there are two steps to follow.
+\xj{Do not use such a long sentence for a section title!}
 
-First, aligning two faces, it is necessary to calculate the location and the size of the facial part from each face image. With the help of the facial landmarks \cite{fld}, it is quick to do so. But only knowing the location and size of two faces is not enough, we need to know where are the eyes, nose and other parts of the face, different faces have different face features, some people have a big nose while others with a small one, some people's nose is closer to eyes while others' nose is farther to eyes. Still, with the help of facial landmarks, we know exactly the distribution of the face features.
 
+\section{Face fusion}
+\label{sec:facefusion}
+
+Our task is to fuse face features of a source face into a target face.
+\xjmd{Our method consists of two steps: face alignment and face feature fusion, as shown in Fig.~\ref{fig:pipeline}. }
+%
+First, aligning two faces, it is necessary to calculate the location and the size of the facial part from each face image. 
+With the help of facial landmarks \cite{fld}, it is quick to do so. 
+But only knowing the location and size of two faces is not enough, we need to know where are the eyes, nose and other parts of the face, different faces have different face features, some people have a big nose while others with a small one, some people's nose is closer to eyes while others' nose is farther to eyes. Still, with the help of facial landmarks, we know exactly the distribution of the face features.
+%
 Second, by aligning two faces, we know the parts on one face and its corresponding parts on the other face. Then, we could fuse features of one face into other face from part to part.
 
-\begin{center}
+\begin{figure}
+	\centering
     \includegraphics[width=4.8in]{images/pipeline.png}
-    \fcaption{Pipeline of our work: (a) Perform facial landmark detection on two faces. (b) Triangulate two faces according to the facial landmarks. (c) Calculate new facial landmarks by interpolating two groups of facial landmarks, warp two faces according to the new facial landmarks. (d) Reconstruct gradients on facial part for fused face . (e) Fuse features of source face into target face by seamless cloning.}
-\end{center}
+    \caption{Pipeline of our work: (a) Perform facial landmark detection on two faces. (b) Triangulate two faces according to the facial landmarks. (c) Calculate new facial landmarks by interpolating two groups of facial landmarks, warp two faces according to the new facial landmarks. (d) Reconstruct gradients on facial part for fused face . (e) Fuse features of source face into target face by seamless cloning.}
+    \label{fig:pipeline}
+\end{figure}
 
 \subsection{Face alignment}
-There are many ways to find facial landmarks \cite{fld2}\cite{fld3}\cite{fld4}\cite{fld}, we adopt \cite{fld}, it is implemented in Dlib.
+There are many ways to find facial landmarks \cite{fld2}\cite{fld3}\cite{fld4}\cite{fld}, we adopt \cite{fld}, \xj{because of what?}.
+It is implemented in Dlib.
 
-In Fig. 1(a), with the landmarks of two faces, two faces' bounding box could be calculated, as we talked before, different faces have different facial landmarks, so the source face's bounding box and the target face's bounding box could have different ratio of height and width. In order to align two faces easily, we reshape the bounding boxes of two faces into square by stretching the shorter side of the bounding box, and we will get a bounding square of face. Then, we need to enlarge the bounding squares of two face a little for the consensus of triangulation of two faces as shown in Fig. 1(b). The center point and side length of bounding square of source face are denoted as $c_s$ and $l_s$, the center point and side length of bounding square of target face are denoted as $c_t$ and $l_t$. The index of facial landmarks $i \in \{1...N\}$, $N$ is the number of facial landmarks, for each point $p_i$ inside the bounding square of source face, we could calculate its corresponding location on the target face by following mapping function:
-$$f(p_i)=(p_i-c_s) \cdot \frac{l_t}{l_s} + c_t \eqno{(1)}$$
+In Fig. 1(a), with the landmarks of two faces, two faces' bounding box could be calculated.
+A%s we talked before, different faces have different facial landmarks, so the source face's bounding box and the target face's bounding box could have different ratio of height and width. 
+In order to align two faces easily, we reshape the bounding boxes of two faces into square by stretching the shorter side of the bounding box, and we will get a bounding square of face. Then, we need to enlarge the bounding squares of two face a little for the consensus of triangulation of two faces as shown in Fig.~\ref{fig:pipeline}(b). 
+%
+The center point and side length of bounding square of source face are denoted as $\mathbf{c}_s$ and $l_s$, the center point and side length of bounding square of target face are denoted as $\mathbf{c}_t$ and $l_t$. The index of facial landmarks $i \in \{1...N\}$, $N$ is the number of facial landmarks, for each point $\mathbf{p}_i$ inside the bounding square of source face, we could calculate its corresponding location on the target face by following mapping function:
+%
+\begin{equation} \label{eq:mapping}
+f(\mathbf{p}_i)=\frac{l_t}{l_s}(\mathbf{p}_i-\mathbf{c}_s)  + \mathbf{c}_t
+\end{equation}
+%
 Before we triangulate a face according to facial landmarks, we need make sure that the transition from the background to the face is natural, so we add some points into the facial landmarks to help triangulate the faces, these points are four corners of bounding squares and four midpoints on four sides of bounding squares. The facial landmarks we need to triangulate on the source face and the target face are denoted as $F_{s}$(the red points on the face image in second row of Fig. 1(b)) and $F_{t}$(the red points on the face image in first row of Fig. 1(b)) respectively. The facial landmarks that we want could be calculated by interpolating $F_s$ and $F_t$ and are denoted as $F_n$, with these new facial landmarks, we could create a new face structure. for each point in $F_s$, $F_t$ and $F_n$, they are denoted as $F_{s_i}$, $F_{t_i}$ and $F_{n_i}$ respectively.
 $$F_{n_i} = \alpha \cdot f(F_{s_i})+(1-\alpha)\cdot F_{t_i} \eqno{(2)}$$
 $\alpha$ controls which face structure we prefer more, if $\alpha$ is small, the new face structure would look more like the target face, in other words, the profile of the new face and the distribution of the new face features would look more like the target face.
 
-After triangulating two faces according to $F_s$ and $F_t$ using Delaunay Triangulation, we get two groups triangles from the source face and the target face, denoted as $T_s$ and $T_t$ respectively. The two faces corresponding triangles are not of the same shape because of different facial landmarks. what we need to do is to make sure the shape of corresponding triangles of two faces are the same. we could get $T_n$ by triangulating $F_n$. Warping $T_{t}$ to the $T_{n}$, and warping $T_s$ in a similar way. In Fig. 1(c), the source face and the target face are warped, the size and the location of their bounding squares are different at each face image, but the shape of the corresponding triangles of two faces  are the same.
+After triangulating two faces according to $F_s$ and $F_t$ using Delaunay Triangulation, we get two groups triangles from the source face and the target face, denoted as $T_s$ and $T_t$ respectively. 
+The two faces corresponding triangles are not of the same shape because of different facial landmarks. 
+what we need to do is to make sure the shape of corresponding triangles of two faces are the same. we could get $T_n$ by triangulating $F_n$. Warping $T_{t}$ to the $T_{n}$, and warping $T_s$ in a similar way. In Fig. 1(c), the source face and the target face are warped, the size and the location of their bounding squares are different at each face image, but the shape of the corresponding triangles of two faces  are the same.
+\xj{Use uppercase letters for the first letter in each sentence.} 
+
 
 \subsection{Face fusion}
 After warping two faces, we have two faces of the same structures and the same distribution of face features, but the size and the location of their bounding square are different, we extract the bounding square area of the source face, scale and translate this area to the same size and location of the bounding square of the target face, the new source face image is shown in Fig. 2(b).
@@ -88,7 +184,7 @@ The target face and the source face are shown in Fig. 2(a) and 2(b), we fuse the
 
 The gradient of the source face is denoted as $g_s$, the gradient of target face is denoted as $g_t$, $g$ is the gradient we will use to recover the face, there are three ways we tried to fuse the gradients of two faces.
 
-For the first way, The guidance field $g$ could be generated  by linearly combinating $g_s$ and $g_t$:
+For the first way, The guidance field $g$ could be generated  by linearly combining $g_s$ and $g_t$:
 
 $$g = \beta \cdot g_s+(1-\beta) \cdot g_t \eqno{(3)}$$
 
@@ -120,9 +216,11 @@ g_s(x) &&{else}\\
 $g_d$ contains the bigger gradients of the $g_s$ and lower gradients of $g_t$, if $g_s(x)$ is smaller than the threshold $\theta_1$ and $g_t(x)$ is smaller than the threshold $\theta_2$, then $g_d(x)$ keeps the gradient from $g_t$ at point $x$, so it contains main features of the source face and the part of the lightning condition of the target face. Fig. 3(a) and Fig. 3(b) are facial parts of the target face and source face, they share the same profile and distribution of features, Fig. 3(c) shows that which parts of $g_d$ are come from $g_t$ or $g_s$, for all $x \in \Omega$ and for each channel, if $g_d(x)$ is come from $g_s(x)$, then the corresponding part in Fig. 3(c) is brighter. \\
 Finally, we could use $g$ to recover the face we want on the target face image by seamless cloning, we could control how much features from the source face to fuse into target face by using the first way or the third way.
 
+
+\xj{All these gradient fusion methods were introduce in Poisson image editing paper. No new technique here. }
 \begin{center}
     \includegraphics[width=4.8in]{images/labelmask.png}
-    \fcaption{(a) Facial part of target face. (b) Facial part of the source face. (c) A mask indicate which part of $g_d$ are come from $g_s$ or $g_t$.}
+    \fcaption{(a) Facial part of target face. (b) Facial part of the source face. (c) A mask indicate which part of $g_d$ are come from $g_s$ or $g_t$. \xj{what does the color in (c) mean? If you want to show where the gradient comes from, it should be a binary mask. If you want to show the weight, it should be a gray weight map. But here is a color map...}}
 \end{center}
 
 \section{Experiments}
@@ -135,6 +233,7 @@ Finally, we could use $g$ to recover the face we want on the target face image b
 
 Fig. 4 shows the effects of different face gradient reconstruction. From Fig. 4(c), we can see that direct linear combination of two faces gradients could bring too much illumination from source face into target face, which makes face looks very unnatural. If we kept the larger gradients of two faces, the illumination of the target face would be strongly broken, more importantly, we can't control how much features we are going to fuse from source face into target face. In Fig. 4(e), the lightning condition and facial hues is closest to the target face image, when we reconstruct gradients using the third method, we only keep the larger gradients of the source face which means the main features of the source are preserved, and we keep lots of the weaker gradients of the target face, which means we maintain some illumination information and facial hues of the target face.
 
+\xj{Since you cut the background out in your fusion step, it is similar with a morphing problem. Compare your method with face morphing techniques. }
 \subsection{How the different parameters effect face fusion}
 In this paper, there are four parameters we can control, they are $\alpha$, $\beta$, $\theta_1$, $\theta_2$. $\alpha$ controls the structure of human faces, in other words, it controls the profile and the distribution of features of human faces. $\beta$ controls the details of human faces, like wrinkles and textures. With $\alpha$ and $\beta$, we can control how much content we want to fuse from source face into target face. If the gradients of source face is weaker than $\theta_1$ and the gradients of target face is weaker than $\theta_2$, then we retain the gradients of the target face, otherwise we keep the gradients of the source face.\\
 Fig. 5 shows how $\alpha$ effects the fused results, $\beta = 0.5$, $\theta_1 = 10$, $\theta_2 = 15$. As the $\alpha$ grows bigger, the distribution of face features of fused face is more like the source face.
@@ -166,6 +265,8 @@ When we fuse the main features of source face into target face, somehow, we need
 \end{center}
 
 Although our work are not aiming at face swapping task, we still could create similar effects by setting $\beta = 1$, this means we almost preserving all the gradients of source faces, but only keep part of weaker gradients of target faces. We compare our results and the work of Korshunova et al. \cite{faceswapping}, in Fig. 9, the source face of all the results is from Fig. 8(a), we can see that our results keep more illumination information and facial hues of target faces which makes our results more natural, but in Fig. 9(c), our result fail to catch the lightning condition of the target face from a high level, this is where we need improve.
+
+\xj{compare with FaceSwap \cite{autorep}.}
 
 \begin{center}
     \includegraphics[width=4.8in]{images/vs.png}
