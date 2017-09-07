@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[runningheads,a4paper]{llncs}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{clrscode}
+\usepackage{url}
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+\makeatletter
+    \newcommand\fcaption{\def\@captype{figure}\caption}
+\makeatother
+\begin{document}
+
+\mainmatter
+\title{Fusing Human Faces}
+\author{Xianxiang Wang}
+\institute{University of Science and Technology of China, 230031 Hefei, China\\
+\url{kowo@mail.ustc.edu.cn}}
+%\toctitle{Lecture Notes in Computer Science}
+%\tocauthor{Authors' Instructions}
+\maketitle
+
+
+\begin{abstract}
+Face fusion technology grows more important in recent years. In this paper, we propose an algorithm to fuse features of source face into target face. There are two main challenges in our task. The first challenge is how to rearrange facial features of target face properly according to source face. The second challenge is to keep hues and illumination information of target face as much as possible so that output face looks more photorealistic. Our algorithm contains two steps. First, we align two faces according to facial landmarks, which give us sizes, locations and distributions  of features of two faces, segment two faces into several triangles using Delaunay triangulation and warp the corresponding triangles of two faces into the same shape. Second, we reconstruct gradients for new face that we are going to generate. With one face image as target image and reconstructed gradients, we generate fused face by seamless clone. We propose an algorithm to reconstruct the new face gradients by preserving the weaker gradients of the target face. Our experiments show that proposed method preserves lots of illumination information and facial hues of target faces, which means output faces still look photorealistic.
+\keywords{Face fusion, Facial landmarks, Delaunay triangulation, Seamless clone}
+\end{abstract}
+
+
+\input{Introduction}
+\input{RelatedWork}
+\input{Algorithm}
+\input{Experiments}
+\input{Conclusions}
+\input{Refs}
+
+
+
+
+
+\end{document}
