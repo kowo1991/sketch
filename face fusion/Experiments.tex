@@ -1,11 +1,7 @@
 \section{Experiments}
 
 
-<<<<<<< HEAD
 First, we compare the results of different face gradient reconstruction.
-=======
-First, we compare the results of different face gradient reconstruction. 
->>>>>>> origin/master
 Then we conduct several experiments to show that how parameters effect the results.
 \cxj{To validate the proposed method, comparison with related approaches is also needed.}
 
@@ -13,7 +9,6 @@ Then we conduct several experiments to show that how parameters effect the resul
 \subsection{Gradient field construction}
 \begin{center}
     \includegraphics[width=4.8in]{images/3cmp.png}
-<<<<<<< HEAD
     \fcaption{The effects of different gradient reconstruction: (a) Source face image. (b) Target face image. (c) Fused face using $g_1$ as guidance field \cxj{according to Eq.~\ref{eq:gradient-linear}?} (d) Fused face using $g_2$ as guidance field. \cxj{Eq.?} (e) Fused face using $g_3$ as guidance field.\cxj{Eq.?}}
     \label{fig:3cmp}
 \end{center}
@@ -25,40 +20,18 @@ If we kept the stronger gradients of two faces, the lightning condition of the t
 %
 More importantly, we can't control how much features we are going to fuse from the source face into the target face.
 In Fig.~\ref{fig:3cmp}(e), the lightning condition and facial hues is closest to the target face image among all the results.
-=======
-    \fcaption{The effects of different gradient reconstruction: (a) Source face image. (b) Target face image. (c) Fusing face by linearly combining the gradients of two faces \cxj{according to Eq.~\ref{eq:gradient-linear}?} (d) Fusing face by keeping the larger gradients of two faces. \cxj{Eq.?} (e) Fusing face through weaker gradient preserving method.\cxj{Eq.?}}
-\end{center}
-
-Fig. 4 shows the effects of different face gradient reconstruction. From Fig. 4(c), we can see that direct linear combination of  gradients of two faces could bring too much illumination from the source face into the target face, which makes face look very unnatural. 
-\cxj{What happens if the target image is lighter?}
-%
-If we kept the stronger gradients of two faces, the lightning condition of the target face would be strongly broken. 
-%
-More importantly, we can't control how much features we are going to fuse from the source face into the target face. 
-In Fig. 4(e), the lightning condition and facial hues is closest to the target face image among all the results. 
->>>>>>> origin/master
 \cxj{Fusing face through weaker gradient?}
 %
 When we reconstruct gradients using the proposed algorithm, we only keep the stronger gradients of the source face, which means the main features of the source are preserved.
 
 \subsection{Parameters of face fusion}
 
-<<<<<<< HEAD
  For our task, there are four parameters we can adjust, they are $\alpha$, $\beta$, $\theta_1$, $\theta_2$. $\alpha$ controls the structure of fused faces, in other words, it controls the profile and the distribution of features of fused faces. $\beta$ controls how much the fused face looks like the source face.
  \cxj{$\beta$ is just a linear combination weight. How can it control face details? It only controls how much it looks like the source image. }
  %
  With $\alpha$ and $\beta$, we can control how much content we want to fuse from source face into target face.
  %
  If the gradients of source face is weaker than $\theta_1$ and the gradients of target face is weaker than $\theta_2$, then we retain the gradients of the target face.
-=======
- For our task, there are four parameters we can adjust, they are $\alpha$, $\beta$, $\theta_1$, $\theta_2$. $\alpha$ controls the structure of human faces, in other words, it controls the profile and the distribution of features of human faces. 
- $\beta$ controls the details of human faces, like wrinkles and textures. 
- \cxj{$\beta$ is just a linear combination weight. How can it control face details? It only controls how much it looks like the source image. }
- %
- With $\alpha$ and $\beta$, we can control how much content we want to fuse from source face into target face. 
- %
- If the gradients of source face is weaker than $\theta_1$ and the gradients of target face is weaker than $\theta_2$, then we retain the gradients of the target face. 
->>>>>>> origin/master
  Otherwise, we keep the gradients of the source face.
 
 Fig.~\ref{fig:pro} shows how $\alpha$ effects the fused results, $\beta = 0.5$, $\theta_1 = 10$, $\theta_2 = 15$. As the $\alpha$ grows bigger, the distribution of face features of fused face is more like the source face.
@@ -95,13 +68,8 @@ When we fuse the main features of source face into target face, somehow, we need
 
 Although our work are not aiming at face swapping task, we still could create similar effects by setting $\beta = 1$.
 \cxj{$\alpha$ should be 1 also.}
-<<<<<<< HEAD
 %
 This means we almost preserving all the gradients of source faces, but only keep part of weaker gradients of target faces. We compare our results and the work of Korshunova et al. \cite{faceswapping}. In Fig. 9, the source face of all the results is from Fig.~\ref{fig:thd2}(a), we can see that our results keep more illumination information and facial hues of target faces which makes our results more natural. But in Fig. 9(c), our result fail to catch the lightning condition of the target face from a high level, this is where we need improve.
-=======
-% 
-This means we almost preserving all the gradients of source faces, but only keep part of weaker gradients of target faces. We compare our results and the work of Korshunova et al. \cite{faceswapping}. In Fig. 9, the source face of all the results is from Fig. 8(a), we can see that our results keep more illumination information and facial hues of target faces which makes our results more natural. But in Fig. 9(c), our result fail to catch the lightning condition of the target face from a high level, this is where we need improve.
->>>>>>> origin/master
 
 \begin{center}
     \includegraphics[width=4.8in]{images/vs.png}
@@ -114,8 +82,5 @@ In Fig.~\ref{fig:trans}, as $\alpha$ and $\beta$ grow bigger, the output faces h
 \begin{center}
     \includegraphics[width=4.8in]{images/trans.png}
     \fcaption{(a) Source face. (b) Target face. (c) Fused face, $\alpha = 0.2$, $\beta = 0.2$. (d) Fused face, $\alpha = 0.4$, $\beta = 0.4$. (e) Fused face, $\alpha = 0.6$, $\beta = 0.6$. (f) Fused face, $\alpha = 0.8$, $\beta = 0.8$. (g) Fused face, $\alpha = 1$, $\beta = 1$. \cxj{Put the parameters under each image.}}
-<<<<<<< HEAD
     \label{fig:trans}
-=======
->>>>>>> origin/master
 \end{center}
