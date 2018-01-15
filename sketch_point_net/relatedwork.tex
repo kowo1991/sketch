@@ -1,0 +1,16 @@
+\section{Related work}
+\label{sec:related_work}
+
+\textbf{Image-based sketch recognition} takes each sketch as an image. In early years, sketch recognition applications \cite{Hse2004SketchedSR, LaViola2004MathPad2AS, Fonseca2000UsingFL} are mainly used for letters and numbers. Hse and Newton \cite{Hse2004SketchedSR} use Zernike moments as features for sketches. Laviola et al. \cite{LaViola2004MathPad2AS} develop an approach for common mathematical symbols recognition. Fonseca and Jorge \cite{Fonseca2000UsingFL} design geometrical features  according to profiles of stokes. Traditional approaches above achieve good results because of the simplicity of the symbols.
+
+Symbols from the same class usually have a standard template. Eitz et al. \cite{Eitz2012HowDH} publish a largely free-hand drawn sketches dataset TU-Berlin including common 250 categories of objects. All the objects from same class are drawn by the impression. There are huge difference in class. Eitz et al. extract HOG features of sketches and use a support vector machine(SVM) for classification. Other existing traditional works \cite{LiHSG15, Schneider2014SketchCA} also extract hand-crafted features and use SVMs for classification.
+
+DNN-based approaches have greatly boosted image recognition performance. Sketch-a-Net \cite{Yu2015SketchaNetTB} and DeepSketch \cite{Seddati2015DeepSketchDC} are both proposed deep Convolutional Networks (ConvNets) for sketch recognition. Both of them are derived from image recognition ConvNets. They have larger convolutional kernel size and less convolutional layer compared with general image recognition ConvNets.
+
+All the  methods mentioned above are borrowed form images, which ignore the sparsity of sketches. Sketches are generated from a pen. So sketches can be represented as a time series.
+
+\textbf{Point-based sketch recognition} takes each sketch as a group of time series points. Guyon et al. \cite{SchenkelPenacEA} firstly use time delay neural network(TDNN) for sketch recognition(hand-writting letters). Possion et al. \cite{Poisson2002MultimodularAB} fuse features generated from TDNN and LeNet \cite{LeCun1998GradientbasedLA}. It takes advantages of both methods. The dataset these two methods used are simple. They contains numbers and letters. Numbers and letters have standard templates. Their stroke orders are explicit. The stroke orders of objects from TU-Berlin dataset are uncertain.
+
+\textbf{Point-based 3d model recognition} takes 3d model as group of unordered points. Sketches and 3d models are both a group of points. The difference is: (i)sketches are group of 2d points instead 3d points; (ii) sketch points have time information for they are generated from a pen.
+
+PointNet \cite{qi2017pointnet} summarises the critical points for each class. This ignores the patterns of 3d models. PointNet++ \cite{qi2017pointnetplusplus} uses a hierarchical architecture to summarise patterns of 3d model gradually. Sketches have time information for each points, which shows the way of sketches being generated.
