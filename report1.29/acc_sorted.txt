@@ -1,0 +1,250 @@
+seagull : 0.19%, -3.691
+dragon : 0.26%, -6.133
+monkey : 0.26%, -4.427
+loudspeaker : 0.26%, -3.890
+panda : 0.30%, -1.504
+race car : 0.33%, -2.263
+suv : 0.33%, 3.271
+bear (animal) : 0.33%, -1.506
+flying bird : 0.33%, -3.567
+dog : 0.33%, -2.962
+standing bird : 0.33%, 0.320
+ashtray : 0.33%, -2.716
+parrot : 0.37%, -4.223
+pigeon : 0.41%, -1.256
+toilet : 0.41%, -5.596
+duck : 0.41%, -0.917
+flying saucer : 0.41%, -2.370
+tablelamp : 0.41%, -2.662
+armchair : 0.41%, -1.367
+truck : 0.41%, 1.833
+banana : 0.41%, -1.436
+tiger : 0.44%, -3.558
+bush : 0.44%, -1.250
+bottle opener : 0.44%, -0.323
+cup : 0.44%, 4.276
+beer-mug : 0.44%, 0.902
+helmet : 0.48%, -4.179
+van : 0.48%, 3.066
+bulldozer : 0.48%, -3.611
+house : 0.48%, 1.342
+satellite : 0.52%, -3.125
+pen : 0.52%, 1.048
+person sitting : 0.52%, -3.391
+microphone : 0.52%, -2.525
+cabinet : 0.52%, 0.580
+scorpion : 0.52%, -2.052
+frog : 0.52%, -3.124
+flashlight : 0.52%, -2.355
+shark : 0.52%, 0.076
+megaphone : 0.56%, -2.588
+door handle : 0.56%, -2.236
+dolphin : 0.56%, -1.722
+mermaid : 0.56%, -4.088
+kangaroo : 0.56%, -2.201
+airplane : 0.56%, -3.508
+squirrel : 0.56%, -3.066
+bread : 0.56%, -2.016
+screwdriver : 0.56%, 3.509
+speed-boat : 0.56%, -1.489
+bed : 0.56%, -1.926
+teddy-bear : 0.59%, 1.787
+floor lamp : 0.59%, 3.731
+computer-mouse : 0.59%, -0.705
+computer monitor : 0.59%, 1.656
+bathtub : 0.59%, 0.240
+lion : 0.59%, -3.157
+bridge : 0.59%, -0.951
+cat : 0.59%, -2.823
+rabbit : 0.59%, -2.003
+leaf : 0.59%, 0.473
+trombone : 0.63%, -1.971
+tire : 0.63%, 2.660
+telephone : 0.63%, -2.625
+violin : 0.63%, 1.505
+vase : 0.63%, 1.123
+mosquito : 0.63%, -1.391
+hammer : 0.63%, 0.338
+head : 0.63%, 0.207
+owl : 0.63%, -2.085
+horse : 0.63%, 1.193
+space shuttle : 0.63%, -2.342
+pipe (for smoking) : 0.63%, 2.725
+submarine : 0.63%, -1.884
+fish : 0.63%, -0.453
+lobster : 0.63%, -2.331
+crane (machine) : 0.63%, -2.633
+bookshelf : 0.63%, 3.022
+cake : 0.63%, 0.097
+barn : 0.63%, 2.636
+crocodile : 0.63%, -2.682
+paper clip : 0.67%, 0.677
+cell phone : 0.67%, 2.970
+cow : 0.67%, 1.000
+carrot : 0.67%, 0.719
+car (sedan) : 0.67%, 3.544
+parking meter : 0.67%, 0.838
+ant : 0.67%, 0.102
+angel : 0.67%, -1.117
+alarm clock : 0.67%, -0.213
+tv : 0.67%, 3.922
+pig : 0.67%, 0.602
+crown : 0.67%, 0.830
+stapler : 0.67%, -0.444
+bicycle : 0.67%, 4.282
+teacup : 0.67%, 4.631
+spider : 0.67%, 0.643
+satellite dish : 0.67%, -3.194
+piano : 0.70%, 1.852
+snowboard : 0.70%, 0.193
+tractor : 0.70%, 0.665
+traffic light : 0.70%, 2.631
+purse : 0.70%, 0.306
+train : 0.70%, 1.441
+sheep : 0.70%, 1.821
+bench : 0.70%, 2.961
+suitcase : 0.70%, 1.259
+swan : 0.70%, 0.894
+chandelier : 0.70%, -2.045
+wrist-watch : 0.70%, -0.389
+pickup truck : 0.70%, 3.996
+apple : 0.70%, 7.103
+syringe : 0.70%, 2.558
+feather : 0.70%, 2.056
+frying-pan : 0.70%, 2.245
+crab : 0.70%, 1.737
+wheel : 0.70%, 5.734
+face : 0.70%, 1.876
+wheelbarrow : 0.70%, -0.609
+basket : 0.74%, 2.308
+shoe : 0.74%, -1.583
+walkie talkie : 0.74%, 1.156
+shovel : 0.74%, 2.185
+cannon : 0.74%, -1.001
+helicopter : 0.74%, -0.167
+sword : 0.74%, 2.801
+pizza : 0.74%, 2.796
+skyscraper : 0.74%, 1.984
+canoe : 0.74%, 2.094
+backpack : 0.74%, -0.516
+tooth : 0.74%, 2.455
+fan : 0.74%, -0.893
+ipod : 0.74%, 2.740
+brain : 0.74%, 0.986
+santa claus : 0.74%, -2.398
+arm : 0.74%, 0.561
+lightbulb : 0.74%, 1.615
+teapot : 0.74%, 0.764
+castle : 0.74%, 1.695
+trumpet : 0.74%, -0.961
+baseball bat : 0.78%, 3.682
+cloud : 0.78%, 2.604
+skateboard : 0.78%, 2.762
+door : 0.78%, 4.472
+camera : 0.78%, 1.886
+book : 0.78%, 1.906
+motorbike : 0.78%, 2.306
+lighter : 0.78%, 3.210
+flower with stem : 0.78%, 3.330
+axe : 0.78%, 1.797
+mouth : 0.78%, 2.252
+mouse (animal) : 0.78%, -1.190
+snake : 0.78%, 1.685
+ship : 0.78%, 2.826
+mailbox : 0.78%, 1.876
+human-skeleton : 0.81%, 5.967
+pretzel : 0.81%, 2.647
+donut : 0.81%, 7.103
+elephant : 0.81%, 0.975
+hamburger : 0.81%, 4.359
+knife : 0.81%, 4.001
+cigarette : 0.81%, 4.497
+strawberry : 0.81%, 5.424
+couch : 0.81%, 1.286
+microscope : 0.81%, -2.873
+guitar : 0.81%, 2.496
+mug : 0.81%, 4.439
+binoculars : 0.81%, -0.660
+sponge bob : 0.81%, 3.052
+fire hydrant : 0.81%, 2.290
+blimp : 0.81%, 1.829
+ear : 0.81%, 1.827
+toothbrush : 0.81%, 4.286
+person walking : 0.81%, 1.952
+parachute : 0.81%, 3.798
+skull : 0.85%, 2.535
+sea turtle : 0.85%, 0.213
+table : 0.85%, 6.637
+bell : 0.85%, 1.391
+bee : 0.85%, -0.728
+ice-cream-cone : 0.85%, 2.772
+bus : 0.85%, 6.016
+harp : 0.85%, 1.752
+mushroom : 0.85%, 2.354
+hedgehog : 0.85%, 1.155
+tree : 0.85%, 3.510
+saxophone : 0.85%, 0.875
+cactus : 0.85%, 3.783
+pumpkin : 0.85%, 5.883
+keyboard : 0.85%, 4.701
+rifle : 0.85%, 2.519
+rooster : 0.85%, 2.646
+hot-dog : 0.85%, 2.540
+octopus : 0.85%, 4.370
+streetlight : 0.89%, 2.761
+chair : 0.89%, 4.400
+key : 0.89%, 3.025
+nose : 0.89%, 4.510
+eye : 0.89%, 2.552
+socks : 0.89%, 2.702
+head-phones : 0.89%, 2.444
+hand : 0.89%, 2.144
+giraffe : 0.89%, 3.409
+snail : 0.89%, 1.212
+tomato : 0.89%, 7.573
+potted plant : 0.89%, 4.709
+power outlet : 0.89%, 4.490
+radio : 0.89%, 4.567
+foot : 0.89%, 2.797
+boomerang : 0.89%, 4.073
+sailboat : 0.89%, 3.003
+palm tree : 0.89%, 3.535
+zebra : 0.89%, 5.131
+umbrella : 0.93%, 7.308
+trousers : 0.93%, 8.890
+envelope : 0.93%, 8.619
+present : 0.93%, 4.847
+hat : 0.93%, 4.812
+hot air balloon : 0.93%, 5.463
+hourglass : 0.93%, 4.968
+comb : 0.93%, 4.404
+diamond : 0.93%, 4.473
+laptop : 0.93%, 5.665
+church : 0.93%, 3.754
+grapes : 0.93%, 7.364
+pineapple : 0.93%, 7.631
+camel : 0.93%, 5.845
+fork : 0.93%, 7.108
+revolver : 0.93%, 2.264
+rollerblades : 0.93%, 3.343
+butterfly : 0.93%, 4.403
+grenade : 0.96%, 4.254
+spoon : 0.96%, 7.296
+snowman : 0.96%, 8.187
+bowl : 0.96%, 7.340
+scissors : 0.96%, 3.279
+wine-bottle : 0.96%, 4.550
+eyeglasses : 0.96%, 7.076
+candle : 0.96%, 5.440
+pear : 0.96%, 7.039
+penguin : 0.96%, 3.970
+windmill : 0.96%, 4.719
+tent : 0.96%, 3.952
+wineglass : 1.00%, 7.307
+sun : 1.00%, 11.070
+t-shirt : 1.00%, 6.594
+calculator : 1.00%, 8.897
+rainbow : 1.00%, 8.431
+tennis-racket : 1.00%, 8.949
+ladder : 1.00%, 9.778
+moon : 1.00%, 8.356
