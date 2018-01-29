@@ -33,12 +33,15 @@ SketchPointNet is derived from PointNet. It uses lots of shared architecture, wh
 
 \begin{table}[htbp]
 \centering
+\footnotesize
 \begin{tabular}{cccc}
     \hline
      -&Sketch-a-Net(vallina)& DeepSketch 1& Ours\\
     \hline
      model size& 64M&223M& 33M\\
      speed &10.9ms&10.6ms& 4.1ms\\
+     total feature maps& 79w& 128.4w& 698.1w\\
+     trainable parameters&824w& 5510w& 64.86w\\
     \hline
 \end{tabular}
 \caption{Performance comparison of different networks(gpu).}
