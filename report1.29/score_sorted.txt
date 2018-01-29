@@ -1,250 +1,251 @@
-dragon : 0.26%, -6.133
-toilet : 0.41%, -5.596
-monkey : 0.26%, -4.427
-parrot : 0.37%, -4.223
-helmet : 0.48%, -4.179
-mermaid : 0.56%, -4.088
-loudspeaker : 0.26%, -3.890
-seagull : 0.19%, -3.691
-bulldozer : 0.48%, -3.611
-flying bird : 0.33%, -3.567
-tiger : 0.44%, -3.558
-airplane : 0.56%, -3.508
-person sitting : 0.52%, -3.391
-satellite dish : 0.67%, -3.194
-lion : 0.59%, -3.157
-satellite : 0.52%, -3.125
-frog : 0.52%, -3.124
-squirrel : 0.56%, -3.066
-dog : 0.33%, -2.962
-microscope : 0.81%, -2.873
-cat : 0.59%, -2.823
-ashtray : 0.33%, -2.716
-crocodile : 0.63%, -2.682
-tablelamp : 0.41%, -2.662
-crane (machine) : 0.63%, -2.633
-telephone : 0.63%, -2.625
-megaphone : 0.56%, -2.588
-microphone : 0.52%, -2.525
-santa claus : 0.74%, -2.398
-flying saucer : 0.41%, -2.370
-flashlight : 0.52%, -2.355
-space shuttle : 0.63%, -2.342
-lobster : 0.63%, -2.331
-race car : 0.33%, -2.263
-door handle : 0.56%, -2.236
-kangaroo : 0.56%, -2.201
-owl : 0.63%, -2.085
-scorpion : 0.52%, -2.052
-chandelier : 0.70%, -2.045
-bread : 0.56%, -2.016
-rabbit : 0.59%, -2.003
-trombone : 0.63%, -1.971
-bed : 0.56%, -1.926
-submarine : 0.63%, -1.884
-dolphin : 0.56%, -1.722
-shoe : 0.74%, -1.583
-bear (animal) : 0.33%, -1.506
-panda : 0.30%, -1.504
-speed-boat : 0.56%, -1.489
-banana : 0.41%, -1.436
-mosquito : 0.63%, -1.391
-armchair : 0.41%, -1.367
-pigeon : 0.41%, -1.256
-bush : 0.44%, -1.250
-mouse (animal) : 0.78%, -1.190
-angel : 0.67%, -1.117
-cannon : 0.74%, -1.001
-trumpet : 0.74%, -0.961
-bridge : 0.59%, -0.951
-duck : 0.41%, -0.917
-fan : 0.74%, -0.893
-bee : 0.85%, -0.728
-computer-mouse : 0.59%, -0.705
-binoculars : 0.81%, -0.660
-wheelbarrow : 0.70%, -0.609
-backpack : 0.74%, -0.516
-fish : 0.63%, -0.453
-stapler : 0.67%, -0.444
-wrist-watch : 0.70%, -0.389
-bottle opener : 0.44%, -0.323
-alarm clock : 0.67%, -0.213
-helicopter : 0.74%, -0.167
-shark : 0.52%, 0.076
-cake : 0.63%, 0.097
-ant : 0.67%, 0.102
-snowboard : 0.70%, 0.193
-head : 0.63%, 0.207
-sea turtle : 0.85%, 0.213
-bathtub : 0.59%, 0.240
-purse : 0.70%, 0.306
-standing bird : 0.33%, 0.320
-hammer : 0.63%, 0.338
-leaf : 0.59%, 0.473
-arm : 0.74%, 0.561
-cabinet : 0.52%, 0.580
-pig : 0.67%, 0.602
-spider : 0.67%, 0.643
-tractor : 0.70%, 0.665
-paper clip : 0.67%, 0.677
-carrot : 0.67%, 0.719
-teapot : 0.74%, 0.764
-crown : 0.67%, 0.830
-parking meter : 0.67%, 0.838
-saxophone : 0.85%, 0.875
-swan : 0.70%, 0.894
-beer-mug : 0.44%, 0.902
-elephant : 0.81%, 0.975
-brain : 0.74%, 0.986
-cow : 0.67%, 1.000
-pen : 0.52%, 1.048
-vase : 0.63%, 1.123
-hedgehog : 0.85%, 1.155
-walkie talkie : 0.74%, 1.156
-horse : 0.63%, 1.193
-snail : 0.89%, 1.212
-suitcase : 0.70%, 1.259
-couch : 0.81%, 1.286
-house : 0.48%, 1.342
-bell : 0.85%, 1.391
-train : 0.70%, 1.441
-violin : 0.63%, 1.505
-lightbulb : 0.74%, 1.615
-computer monitor : 0.59%, 1.656
-snake : 0.78%, 1.685
-castle : 0.74%, 1.695
-crab : 0.70%, 1.737
-harp : 0.85%, 1.752
-teddy-bear : 0.59%, 1.787
-axe : 0.78%, 1.797
-sheep : 0.70%, 1.821
-ear : 0.81%, 1.827
-blimp : 0.81%, 1.829
-truck : 0.41%, 1.833
-piano : 0.70%, 1.852
-face : 0.70%, 1.876
-mailbox : 0.78%, 1.876
-camera : 0.78%, 1.886
-book : 0.78%, 1.906
-person walking : 0.81%, 1.952
-skyscraper : 0.74%, 1.984
-feather : 0.70%, 2.056
-canoe : 0.74%, 2.094
-hand : 0.89%, 2.144
-shovel : 0.74%, 2.185
-frying-pan : 0.70%, 2.245
-mouth : 0.78%, 2.252
-revolver : 0.93%, 2.264
-fire hydrant : 0.81%, 2.290
-motorbike : 0.78%, 2.306
-basket : 0.74%, 2.308
-mushroom : 0.85%, 2.354
-head-phones : 0.89%, 2.444
-tooth : 0.74%, 2.455
-guitar : 0.81%, 2.496
-rifle : 0.85%, 2.519
-skull : 0.85%, 2.535
-hot-dog : 0.85%, 2.540
-eye : 0.89%, 2.552
-syringe : 0.70%, 2.558
-cloud : 0.78%, 2.604
-traffic light : 0.70%, 2.631
-barn : 0.63%, 2.636
-rooster : 0.85%, 2.646
-pretzel : 0.81%, 2.647
-tire : 0.63%, 2.660
-socks : 0.89%, 2.702
-pipe (for smoking) : 0.63%, 2.725
-ipod : 0.74%, 2.740
-streetlight : 0.89%, 2.761
-skateboard : 0.78%, 2.762
-ice-cream-cone : 0.85%, 2.772
-pizza : 0.74%, 2.796
-foot : 0.89%, 2.797
-sword : 0.74%, 2.801
-ship : 0.78%, 2.826
-bench : 0.70%, 2.961
-cell phone : 0.67%, 2.970
-sailboat : 0.89%, 3.003
-bookshelf : 0.63%, 3.022
-key : 0.89%, 3.025
-sponge bob : 0.81%, 3.052
-van : 0.48%, 3.066
-lighter : 0.78%, 3.210
-suv : 0.33%, 3.271
-scissors : 0.96%, 3.279
-flower with stem : 0.78%, 3.330
-rollerblades : 0.93%, 3.343
-giraffe : 0.89%, 3.409
-screwdriver : 0.56%, 3.509
-tree : 0.85%, 3.510
-palm tree : 0.89%, 3.535
-car (sedan) : 0.67%, 3.544
-baseball bat : 0.78%, 3.682
-floor lamp : 0.59%, 3.731
-church : 0.93%, 3.754
-cactus : 0.85%, 3.783
-parachute : 0.81%, 3.798
-tv : 0.67%, 3.922
-tent : 0.96%, 3.952
-penguin : 0.96%, 3.970
-pickup truck : 0.70%, 3.996
-knife : 0.81%, 4.001
-boomerang : 0.89%, 4.073
-grenade : 0.96%, 4.254
-cup : 0.44%, 4.276
-bicycle : 0.67%, 4.282
-toothbrush : 0.81%, 4.286
-hamburger : 0.81%, 4.359
-octopus : 0.85%, 4.370
-chair : 0.89%, 4.400
-butterfly : 0.93%, 4.403
-comb : 0.93%, 4.404
-mug : 0.81%, 4.439
-door : 0.78%, 4.472
-diamond : 0.93%, 4.473
-power outlet : 0.89%, 4.490
-cigarette : 0.81%, 4.497
-nose : 0.89%, 4.510
-wine-bottle : 0.96%, 4.550
-radio : 0.89%, 4.567
-teacup : 0.67%, 4.631
-keyboard : 0.85%, 4.701
-potted plant : 0.89%, 4.709
-windmill : 0.96%, 4.719
-hat : 0.93%, 4.812
-present : 0.93%, 4.847
-hourglass : 0.93%, 4.968
-zebra : 0.89%, 5.131
-strawberry : 0.81%, 5.424
-candle : 0.96%, 5.440
-hot air balloon : 0.93%, 5.463
-laptop : 0.93%, 5.665
-wheel : 0.70%, 5.734
-camel : 0.93%, 5.845
-pumpkin : 0.85%, 5.883
-human-skeleton : 0.81%, 5.967
-bus : 0.85%, 6.016
-t-shirt : 1.00%, 6.594
-table : 0.85%, 6.637
-pear : 0.96%, 7.039
-eyeglasses : 0.96%, 7.076
-donut : 0.81%, 7.103
-apple : 0.70%, 7.103
-fork : 0.93%, 7.108
-spoon : 0.96%, 7.296
-wineglass : 1.00%, 7.307
-umbrella : 0.93%, 7.308
-bowl : 0.96%, 7.340
-grapes : 0.93%, 7.364
-tomato : 0.89%, 7.573
-pineapple : 0.93%, 7.631
-snowman : 0.96%, 8.187
-moon : 1.00%, 8.356
-rainbow : 1.00%, 8.431
-envelope : 0.93%, 8.619
-trousers : 0.93%, 8.890
-calculator : 1.00%, 8.897
-tennis-racket : 1.00%, 8.949
-ladder : 1.00%, 9.778
-sun : 1.00%, 11.070
+class : accuracy, average score
+dragon : 0.33, -6.540
+toilet : 0.41, -6.041
+parrot : 0.37, -4.687
+helmet : 0.48, -4.510
+loudspeaker : 0.26, -4.412
+monkey : 0.37, -4.339
+seagull : 0.19, -4.269
+mermaid : 0.59, -4.223
+flying bird : 0.37, -3.924
+airplane : 0.56, -3.720
+bulldozer : 0.56, -3.676
+tiger : 0.41, -3.670
+frog : 0.52, -3.564
+satellite dish : 0.67, -3.479
+person sitting : 0.59, -3.354
+ashtray : 0.30, -3.323
+tablelamp : 0.33, -3.219
+dog : 0.33, -3.168
+squirrel : 0.56, -3.150
+flying saucer : 0.41, -3.130
+lion : 0.63, -3.040
+satellite : 0.44, -3.039
+microscope : 0.78, -3.034
+megaphone : 0.52, -2.979
+microphone : 0.48, -2.886
+crane (machine) : 0.67, -2.858
+cat : 0.67, -2.802
+crocodile : 0.67, -2.778
+flashlight : 0.59, -2.682
+lobster : 0.63, -2.666
+telephone : 0.63, -2.593
+space shuttle : 0.63, -2.541
+bread : 0.52, -2.538
+door handle : 0.56, -2.472
+race car : 0.33, -2.464
+santa claus : 0.81, -2.458
+trombone : 0.63, -2.413
+scorpion : 0.52, -2.383
+owl : 0.63, -2.221
+speed-boat : 0.63, -2.191
+submarine : 0.63, -2.155
+dolphin : 0.59, -2.125
+banana : 0.44, -2.110
+bed : 0.56, -2.108
+kangaroo : 0.56, -1.966
+shoe : 0.70, -1.935
+rabbit : 0.59, -1.810
+panda : 0.26, -1.723
+mosquito : 0.63, -1.677
+armchair : 0.37, -1.636
+bear (animal) : 0.37, -1.580
+bush : 0.52, -1.574
+pigeon : 0.41, -1.466
+angel : 0.59, -1.458
+chandelier : 0.70, -1.372
+duck : 0.41, -1.305
+bridge : 0.56, -1.284
+mouse (animal) : 0.81, -1.262
+fish : 0.56, -1.180
+binoculars : 0.81, -1.085
+trumpet : 0.74, -1.070
+cannon : 0.74, -0.995
+wheelbarrow : 0.70, -0.957
+computer-mouse : 0.59, -0.908
+bee : 0.85, -0.859
+fan : 0.70, -0.762
+bottle opener : 0.48, -0.732
+backpack : 0.74, -0.635
+stapler : 0.63, -0.600
+alarm clock : 0.67, -0.474
+cake : 0.63, -0.261
+wrist-watch : 0.70, -0.249
+snowboard : 0.59, -0.230
+bathtub : 0.59, -0.206
+shark : 0.59, -0.153
+ant : 0.67, -0.071
+purse : 0.70, -0.021
+helicopter : 0.78, -0.020
+hammer : 0.67, 0.016
+head : 0.63, 0.042
+sea turtle : 0.85, 0.059
+arm : 0.67, 0.071
+paper clip : 0.63, 0.143
+standing bird : 0.41, 0.158
+leaf : 0.63, 0.271
+swan : 0.67, 0.346
+carrot : 0.67, 0.366
+spider : 0.67, 0.402
+cabinet : 0.48, 0.430
+teapot : 0.70, 0.438
+beer-mug : 0.52, 0.607
+pen : 0.56, 0.672
+crown : 0.70, 0.779
+brain : 0.74, 0.820
+pig : 0.67, 0.889
+parking meter : 0.67, 0.942
+saxophone : 0.85, 1.006
+suitcase : 0.67, 1.012
+tractor : 0.74, 1.020
+horse : 0.63, 1.042
+hedgehog : 0.81, 1.075
+bell : 0.93, 1.110
+couch : 0.81, 1.128
+elephant : 0.81, 1.179
+snail : 0.81, 1.181
+vase : 0.63, 1.242
+ear : 0.85, 1.340
+blimp : 0.78, 1.437
+computer monitor : 0.70, 1.472
+axe : 0.81, 1.502
+walkie talkie : 0.74, 1.525
+harp : 0.85, 1.561
+house : 0.48, 1.574
+cow : 0.74, 1.579
+violin : 0.63, 1.609
+canoe : 0.70, 1.619
+snake : 0.78, 1.636
+face : 0.70, 1.690
+shovel : 0.74, 1.695
+mailbox : 0.78, 1.726
+hand : 0.89, 1.731
+sheep : 0.67, 1.792
+castle : 0.74, 1.813
+crab : 0.70, 1.835
+feather : 0.74, 1.876
+frying-pan : 0.70, 1.908
+piano : 0.70, 1.910
+teddy-bear : 0.59, 1.966
+train : 0.74, 2.028
+mouth : 0.78, 2.029
+book : 0.74, 2.032
+hot-dog : 0.78, 2.042
+skyscraper : 0.74, 2.149
+person walking : 0.85, 2.162
+fire hydrant : 0.81, 2.179
+truck : 0.44, 2.191
+lightbulb : 0.74, 2.223
+ice-cream-cone : 0.85, 2.250
+camera : 0.81, 2.267
+basket : 0.70, 2.272
+ship : 0.78, 2.282
+streetlight : 0.89, 2.341
+head-phones : 0.89, 2.367
+eye : 0.89, 2.374
+motorbike : 0.78, 2.394
+tooth : 0.74, 2.416
+mushroom : 0.81, 2.432
+traffic light : 0.70, 2.434
+revolver : 0.93, 2.452
+barn : 0.59, 2.466
+pipe (for smoking) : 0.63, 2.507
+socks : 0.85, 2.511
+cloud : 0.81, 2.525
+syringe : 0.74, 2.542
+bench : 0.70, 2.613
+sword : 0.70, 2.627
+tire : 0.63, 2.638
+pretzel : 0.78, 2.654
+sailboat : 0.89, 2.706
+guitar : 0.85, 2.729
+skull : 0.85, 2.827
+pizza : 0.74, 2.837
+key : 0.89, 2.862
+skateboard : 0.74, 2.868
+rifle : 0.85, 2.917
+bookshelf : 0.63, 2.931
+screwdriver : 0.63, 2.950
+rooster : 0.85, 2.952
+ipod : 0.78, 3.016
+foot : 0.89, 3.050
+suv : 0.37, 3.207
+cell phone : 0.70, 3.245
+sponge bob : 0.85, 3.341
+car (sedan) : 0.63, 3.343
+tv : 0.63, 3.344
+scissors : 0.96, 3.358
+van : 0.48, 3.367
+flower with stem : 0.81, 3.426
+rollerblades : 0.93, 3.433
+lighter : 0.74, 3.447
+parachute : 0.81, 3.481
+palm tree : 0.89, 3.591
+tree : 0.81, 3.613
+floor lamp : 0.56, 3.662
+cup : 0.48, 3.662
+baseball bat : 0.81, 3.679
+knife : 0.78, 3.760
+penguin : 0.96, 3.831
+church : 0.93, 3.870
+cactus : 0.89, 3.886
+teacup : 0.59, 3.922
+diamond : 0.93, 3.965
+mug : 0.89, 3.967
+giraffe : 0.93, 3.982
+tent : 0.96, 4.020
+boomerang : 0.89, 4.048
+cigarette : 0.78, 4.076
+grenade : 0.93, 4.094
+bicycle : 0.74, 4.241
+pickup truck : 0.70, 4.251
+butterfly : 0.96, 4.280
+nose : 0.89, 4.338
+hamburger : 0.81, 4.347
+toothbrush : 0.85, 4.483
+door : 0.78, 4.486
+present : 0.93, 4.495
+chair : 0.93, 4.530
+octopus : 0.85, 4.549
+potted plant : 0.89, 4.566
+power outlet : 0.93, 4.686
+windmill : 0.96, 4.747
+wine-bottle : 0.96, 4.787
+radio : 0.85, 4.913
+zebra : 0.85, 4.928
+keyboard : 0.89, 4.949
+hat : 0.93, 4.976
+comb : 0.93, 5.037
+candle : 0.93, 5.206
+hourglass : 0.93, 5.280
+wheel : 0.70, 5.425
+hot air balloon : 0.93, 5.668
+laptop : 0.93, 5.771
+pumpkin : 0.85, 5.784
+camel : 0.96, 5.958
+strawberry : 0.85, 6.186
+human-skeleton : 0.81, 6.194
+bus : 0.85, 6.419
+t-shirt : 1.00, 6.601
+apple : 0.67, 6.622
+donut : 0.85, 6.931
+table : 0.85, 6.966
+umbrella : 0.89, 6.973
+bowl : 0.96, 6.974
+pear : 0.96, 7.055
+spoon : 0.93, 7.184
+tomato : 0.85, 7.215
+fork : 0.89, 7.225
+eyeglasses : 0.96, 7.314
+wineglass : 1.00, 7.815
+moon : 1.00, 7.962
+grapes : 0.93, 8.021
+pineapple : 0.93, 8.447
+snowman : 0.96, 8.659
+trousers : 0.93, 8.750
+envelope : 0.96, 9.098
+calculator : 1.00, 9.111
+rainbow : 1.00, 9.197
+tennis-racket : 1.00, 9.346
+ladder : 1.00, 9.732
+sun : 1.00, 12.013
