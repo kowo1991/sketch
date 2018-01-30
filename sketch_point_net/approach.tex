@@ -6,10 +6,10 @@ In this section, we introduce key steps of our works. We first detail how the ar
 \subsection{SketchPointNet}
 \label{ssec:sketch_point_net}
 
-SketchPointNet architecture(see Fig.~\ref{fig:sketchpointnet}) are borrowed from PointNet++ architecture. The differences between SketchPointNet and PointNet++ are how we select group centers and group the points. For PointNet++, they use iterative farthest point sampling to choose group centers to ensure that group centers are evenly distributed. Sketch points are sparsely distributed on the strokes. We choose group centers every $t$ points along the time series(each sketch represented as a time series). The way we choose group centers is faster the way in PointNet++. In a meanwhile,
-our group centers are nearly evenly distributed in 2d space. When group the point around group centers, we have to set a proper group numbers. In PointNet++, if the group numbers is greater than setting group number, they directly delete last extra points. But we delete points every other points till the group number equals to setting group number. This can ensure the integrity of the pattern(see Fig. ~\ref{fig:group}).
+SketchPointNet architecture(see Fig.~\ref{fig:sketchpointnet}) are borrowed from PointNet++ architecture. The differences between SketchPointNet and PointNet++ are how we select group centers and group the points. For PointNet++, they use iterative farthest point sampling to choose group centers to ensure that group centers are evenly distributed. Sketch points are sparsely distributed on the strokes. We choose group centers every $t$ points along the time series(each sketch represented as a time series). The way we choose group centers is faster than the way in PointNet++. In a meanwhile,
+our group centers are nearly evenly distributed in 2d space. When group the point around group centers, we have to set a proper group numbers. In PointNet++, if a number of group points  is greater than the setting number, they directly delete last extra points in the group. But we delete points every other point till the group number equals to the setting number. This can ensure the integrity of the pattern(see Fig. ~\ref{fig:group}).
 
-In order to get local pattern information of each sketch, we group sketches for two times. Micro PointNet P1 summarize patterns with group radius $r_1$ equals to 0.1. Micro PointNet P2 summarize patterns in a large receptive field with $r_2 = 0.3$. PointNet P3 summarize pattern features generated from m2 for classification of 250 categories.
+In order to get local pattern information of each sketch, we group sketches for two times. Micro PointNet P1 summarizes patterns with group radius $r_1 = 0.1$. Micro PointNet P2 summarizes patterns in a large receptive field with $r_2 = 0.3$. PointNet P3 summarizes pattern features generated from P2 for classification of 250 categories.
 
 In detail, each sketch is represented as 1024 points. Each point has 3 dimension. The first two dimension denote the location of the point. The last dimension is the stroke order information(each point belong to a stroke). In order to extract features of local patterns, we resample 512 points as group center every other points and group the points around the group center with $r_1 = 0.1$. After the first time of grouping, we get 512 groups $\left\{ g_{1_i}| i = 1, ..., 512 \right\}$. Each group contains 20 points. We get a 5d pattern feature after each of 512 groups passing through the micro PointNet P1. The feature of each group is a 8d vector which contains two parts. The first 5 dimension indicate the pattern feature of the group. The last 3 dimension indicate the center location of the group.
 
@@ -26,7 +26,7 @@ In a similar way, we resample points every 4 points from the last group centers.
 \subsection{Resample scenario}
 \label{ssec:resample_scenario}
 
-For each sketch, we sample it into a fixed number of points. Or we can sample each points in sketches with a given interval. In second case, the point number $\left\{ N_{P_i}| i = 1, ..., 20000 \right\}$ of sketches are different due to various total stroke length of each sketch. The input to the network must have a fixed size. Because tensorflow 1.2 only support static graph. If we set input size as $\max \limits_{1 \le i \le 20000} N_{P_i}$, there are great waste for computing resources. Because only few sketches need large input size.
+For each sketch, we sample it into a fixed number of points. Or we can sample each points in sketches with a given interval. In second case, the point number $\left\{ N_{P_i}| i = 1, ..., 20000 \right\}$ of sketches are different due to various total length of stroke of each sketch. The input to the network must have a fixed size. Because tensorflow 1.2 only support static graph. If we set input size as $\max \limits_{1 \le i \le 20000} N_{P_i}$, there are great waste for computing resources. Because only few sketches need large input size.
 
 \begin{figure}
     \center
@@ -36,7 +36,7 @@ For each sketch, we sample it into a fixed number of points. Or we can sample ea
 \end{figure}
 
  We calculate each stroke length $\left\{ L_i| i = 1, ..., m \right\}$ from strokes $\left\{ T_i^{init}| i = 1, ..., m \right\}$. $m$ stands for stroke numbers. The total stroke length is $C$. Given the number of points $N$, we assign each stroke $B_i$ points $\left\{ B_i| i = 1, ..., m \right\}$ according to its corresponding stroke length $T_i$. Then we reample each stroke in $B_i$ points by using \$1 \cite{Wobbrock2007GesturesWL} resample scheme. The strokes after resampled are represented as $\left\{ T_i^{rsp}| i = 1, ..., m \right\}$. In Fig.~\ref{fig:resample}, the airplane and the tree are resample into different number of points.
- 
+
 \begin{algorithm}
 \label{alg:resample}
     \caption{Resample each sketch into N points}
