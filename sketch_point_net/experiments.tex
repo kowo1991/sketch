@@ -29,7 +29,7 @@ From the Fig.~\ref{fig:resample}, we can see that 1024 points are enough to repr
 
 \subsection{Comparison of different methods in recognition speed and accuracy}
 \label{ssec:cm_speed}
-SketchPointNet is derived from PointNet. It uses lots of shared architecture, which means less parameters compared with existing Image-based sketch recognition approaches. We performed Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet on Titan 1080 with tensorflow 1.2. The whole model of Sketch-a-Net and DeepSketch 2 \cite{Dupont2016DeepSketch2D} use different feature fusion method, which makes the whole models too large to suite the mobile computing device. So we only compare 3 end-to-end networks(Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet).
+SketchPointNet is derived from PointNet. It uses lots of shared architecture, which means less parameters compared with existing Image-based sketch recognition approaches. We performed Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet on Titan 1080 with tensorflow 1.2. The whole model of Sketch-a-Net and DeepSketch 2 \cite{Dupont2016DeepSketch2D} use different feature fusion method, which makes the whole models too large. So we only compare 3 end-to-end networks(Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet).
 
 \begin{table}[htbp]
 \centering
@@ -39,12 +39,10 @@ SketchPointNet is derived from PointNet. It uses lots of shared architecture, wh
      -&Sketch-a-Net(vallina)& DeepSketch 1& Ours\\
     \hline
      model size& 64M&223M& 33M\\
-     speed &10.9ms&10.6ms& 4.1ms\\
-     total feature maps& 79w& 128.4w& 698.1w\\
      trainable parameters&824w& 5510w& 64.86w\\
     \hline
 \end{tabular}
-\caption{Performance comparison of different networks(gpu).}
+\caption{Comparison of trainable parameters.}
 \label{tbl:speed}
 \end{table}
 
