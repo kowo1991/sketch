@@ -26,7 +26,7 @@
 
 % Title.
 % ------
-\title{SKETCHPOINTNET: A FASTER MICRO NEURAL NETWORK FOR SKETCH RECOGNITION}
+\title{SKETCHPOINTNET: Learn to recognize sketches as time serieses}
 %
 % Single address.
 % ---------------
@@ -58,11 +58,11 @@
 \maketitle
 %
 \begin{abstract}
-Sketch recognition has been studied for years. In previous works, sketches are only treated as images, which ignores the sparse nature of sketches. In this paper, we treat each sketch as a series of track points and propose a neural network to recognize it. Our network, termed as SketchPointNet, achieve highest recognition accuracy among point-based sketch recognition approaches. It uses a hierarchically architecture to summarize the pattern of sketches gradually. And this captures the features of different level. Evaluation are performed on TU-Berlin benchmark. SketchPointNet has less trainable parameters because of shared architectures. 
+Sketch recognition has been studied for years. In previous works, sketches are only treated as images, which ignores the sparse nature of sketches. In this paper, we retreat each sketch as a series of track points and propose a neural network to recognize it. Our network, termed as SketchPointNet, achieves the highest recognition accuracy among point-based sketch recognition approaches. We use a novel group scheme which investigates the timing characteristic of sketch points, which ensures the integrity of local patterns. SketchPointNet needs very few parameters compared with image-based sketch recognition approaches. Meanwhile, it still achieves a high recognition accuracy which is close to the state-of-the-art approaches on TU-Berlin dataset.
 \end{abstract}
 
 \begin{keywords}
-Sketch recognition, recognition speed, model size, SketchPointNet
+Point-based sketch recognition, image-based sketch recognition, SketchPointNet, recognition accuracy
 \end{keywords}
 
 \input{introduction}

@@ -1,6 +1,6 @@
 \section{Experiments}
 \label{sec:experiments}
-In this section, we evaluate our method using  TU-Berlin sketch benchmark. It contains 250 classes. Each class has 80 instances. We do a group of experiments to compare our method with other methods in recognition speed and accuracy. Like previous works, we use 3-fold cross-validation within the dataset.  We use sketch dataset augmentation scenario  ~\cite{Yu2015SketchaNetTB} to ease our over-fitting problem(see Fig ~\ref{fig:aug_data}).
+In this section, we evaluate our method using  TU-Berlin sketch benchmark. It contains 250 classes. Each class has 80 instances. We do a group of experiments to compare our method with other methods in recognition accuracy and trainable parameters. Like previous works, we use 3-fold cross-validation within the dataset.  We use sketch dataset augmentation scenario  ~\cite{Yu2015SketchaNetTB} to ease our over-fitting problem(see Fig ~\ref{fig:aug_data}).
 
 \begin{figure}[htbp]
     \center
@@ -12,7 +12,7 @@ In this section, we evaluate our method using  TU-Berlin sketch benchmark. It co
 \subsection{Recognition accuracy with different $N$}
 \label{ssec:resample_number}
 
-From the Fig.~\ref{fig:resample}, we can see that 1024 points are enough to represent a tree. 512 points can also represent a tree but a little sparser. Even a tree with 256 points are visually clear for humans. In order find a proper $N$, we did a group experiments with $N = 1024, 512, 256, 128$. If $N$ is too large, there are no good for recognition accuracy, but makes recognition speed slower.
+From the Fig.~\ref{fig:resample}, we can see that 256 points are enough to represent the airplane. But in TU-Berlin dataset, there are many instances with lots of strokes that 256 points are not enough to represent an examples. In order find a proper $N$, we did a group experiments with $N = 1024, 512, 256, 128$. If $N$ is too large, there are no good for recognition accuracy, but makes the model slower.
 
 \begin{table}[htbp]
 \begin{tabular}{|p{1.4cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}
@@ -24,10 +24,10 @@ From the Fig.~\ref{fig:resample}, we can see that 1024 points are enough to repr
      time & x & x & x& x\\
     \hline
 \end{tabular}
-\caption{Classification with different $N$.}
+\caption{Recognition with different $N$.}
 \end{table}
 
-\subsection{Comparison of different methods in recognition speed and accuracy}
+\subsection{Comparison of different methods in number of parameters and recognition accuracy}
 \label{ssec:cm_speed}
 SketchPointNet is derived from PointNet. It uses lots of shared architecture, which means less parameters compared with existing Image-based sketch recognition approaches. We performed Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet on Titan 1080 with tensorflow 1.2. The whole model of Sketch-a-Net and DeepSketch 2 \cite{Dupont2016DeepSketch2D} use different feature fusion method, which makes the whole models too large. So we only compare 3 end-to-end networks(Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet).
 
@@ -38,12 +38,12 @@ SketchPointNet is derived from PointNet. It uses lots of shared architecture, wh
     \hline
      -&Sketch-a-Net(vallina)& DeepSketch 1& Ours\\
     \hline
-     model size& 64M&223M& 33M\\
-     trainable parameters&824w& 5510w& 64.86w\\
+     model size& 64M&223M& 20M\\
+     trainable parameters&824w& 5510w& 94.1w\\
     \hline
 \end{tabular}
 \caption{Comparison of trainable parameters.}
-\label{tbl:speed}
+\label{tbl:model_size}
 \end{table}
 
 
@@ -88,7 +88,7 @@ SketchPointNet is derived from PointNet. It uses lots of shared architecture, wh
 \label{tbl:pointnet_cp}
 \end{table*}
 
-From the tabel ~\ref{tbl:speed} we can see that our model is faster and smaller than Sketch-a-Net(vallina) and DeepSketch 1. Although our model are smaller compared with existing DNN-based appraches. We still achieve a high recognition accuracy.
+From the tabel ~\ref{tbl:model_size} we can see that our model need fewer trainable parameters than Sketch-a-Net(vallina) and DeepSketch 1. Although our model are smaller compared with existing DNN-based appraches. We still achieve a high recognition accuracy.
 
 \begin{table}[htbp]
 \centering
