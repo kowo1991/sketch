@@ -1,11 +1,18 @@
 \section{Introduction}
 \label{sec:intro}
 
+\begin{figure*}
+    \center
+    \includegraphics[width=7in]{images/sketchpointnet.png}
+    \fcaption{SketchPointNet architecture.}
+    \label{fig:sketchpointnet}
+\end{figure*}
+
 With the popularity of mobile and potable devices, people are getting easier to sketch objects. Sketches have proved to be a powerful and effective tool for communication. A mount of approaches ~\cite{Eitz2012HowDH, LiHSG15, Schneider2014SketchCA, Yu2015SketchaNetTB, Seddati2015DeepSketchDC, Dupont2016DeepSketch2D} focused on sketch recognition have been studied. In recent years, point-based deep neural networks(DNNs) ~\cite{qi2017pointnet, qi2017pointnetplusplus, 1801.07791} have been greatly developed, which provides possibilities of point-based sketch recognition.
 
 Although sketches and images can be visually recognized, they have two main differences: (i) Patterns take more important place in sketch recognition than in image recognition. Sketches vary largely within class. Meanwhile, some sketches coming from different class have similar looking from the high level. But differences can be told from the mid level or low level, e.g., some cats and snowmen are identified easily from their facial part, but hardly from the whole sketches. Objects in images are from the real life. The size of different parts from one object in images are more rationale than that in sketches. (ii) Sketches are sparser than images. Sketches are composed of a group of strokes. For a sketch, most area is blank. Images contains richer information such as texture and dilation. (iii) Sketches have timing information. They are generated from a pen. This means a sketch can be viewed as a series of points.
 
-Previous works on sketch recognition are generally borrowed from image classification paradigm. Both conventional sketch recognition and DNNs take sketches as images. These methods do not take full advantage of the sparsity of sketches. Due to special generalization a sketch, it can be represented by only a series of points which takes less storage and needs fewer parameters to recognize it than represented as an image.
+Previous works on sketch recognition are generally borrowed from image classification paradigm. Both conventional sketch recognition and DNNs take sketches as images. These methods do not take full advantage of the sparsity of sketches, which introduces too much redundant parameters for models. Due to special generalization a sketch, it can be represented by only a series of points which takes less storage and needs fewer parameters to recognize it than represented as an image.
 
 \textbf{Traditional sketch recognition.} In early years, sketch recognition applications \cite{Hse2004SketchedSR, LaViola2004MathPad2AS, Fonseca2000UsingFL} are mainly used for letters and numbers. Hse and Newton \cite{Hse2004SketchedSR} use Zernike moments as features for sketches. Laviola et al. \cite{LaViola2004MathPad2AS} develop an approach for common mathematical symbols recognition. Fonseca and Jorge \cite{Fonseca2000UsingFL} design geometrical features  according to profiles of stokes. These approaches achieve good results because of the simplicity of the symbols.
 
@@ -15,7 +22,7 @@ Symbols from the same class usually have a standard template. Eitz et al. \cite{
 
 Although Sketch-a-Net \cite{Yu2015SketchaNetTB} and DeepSketch \cite{Seddati2015DeepSketchDC} achieve higher recognition accuracy than traditional methods. They still treat each sketch as an image, which do not take full advantages of sparsity of sketches.
 
-\textbf{Point-based 3d model recognition} takes 3d model as group of unordered points. Sketches and 3d models are both a group of points. The differences are: (i)each sketche is a group of 2d points instead 3d points; (ii) sketch points have timing information for they are generated from a pen.
+\textbf{Point-based 3d model recognition} takes 3d model as group of unordered points. Sketches and 3d models are both a group of points. The differences are: (i) each sketch is a group of 2d points instead of 3d points; (ii) sketch points have timing information for they are generated from a pen.
 
 PointNet \cite{qi2017pointnet} summarises the critical points for each class. This ignores the patterns of 3d models. PointNet++ \cite{qi2017pointnetplusplus} uses a hierarchical architecture to summarise patterns of 3d model gradually. Sketches have timing information for each points, which shows the way of sketches being generated.
 

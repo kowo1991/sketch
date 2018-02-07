@@ -19,35 +19,51 @@ From the Fig.~\ref{fig:resample}, we can see that 256 points are enough to repre
     \hline
      $N$ & 1024& 512 & 256 & 128\\
     \hline
-     accuracy & x\% & x\% & x\%& x\%\\
-    \hline
-     time & x & x & x& x\\
+     Accuracy & x\% & x\% & x\%& x\%\\
     \hline
 \end{tabular}
 \caption{Recognition with different $N$.}
 \end{table}
 
-\subsection{Comparison of different methods in number of parameters and recognition accuracy}
-\label{ssec:cm_speed}
-SketchPointNet is derived from PointNet. It uses lots of shared architecture, which means less parameters compared with existing Image-based sketch recognition approaches. We performed Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet on Titan 1080 with tensorflow 1.2. The whole model of Sketch-a-Net and DeepSketch 2 \cite{Dupont2016DeepSketch2D} use different feature fusion method, which makes the whole models too large. So we only compare 3 end-to-end networks(Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet).
+\subsection{Training strategy}
+\label{ssec:training_strategy}
+When we train PointNet ~\cite{qi2017pointnet} model for sketch recognition. The recognition accuracy on training dataset is extremely high and lower over than 20\% on evaluation dataset. It shows that PointNet is easy to overfit. SketchPointNet is a multi-stage PointNet. It also suffers from overfitting problem. In order to ease overfitting problem, we design a training strategy for SketchPointNet: (i) we random initialize all the parameters in the SketchPointNet for the first time of training ; (ii) after the latest round of training, we initialize parameters in P1 and P2 with last trained parameters and random initialize parameters in P3, then, we retrain the SketchPointNet; (iii) keep doing the last step till the recognition accuracy on evaluation dataset is stable.
+
+From the Table ~\ref{tbl:iteration}, we can see that the recognition results on evaluation dataset are getting higher and higher after numbers of iterations of training. It shows that our training strategy is effective. The training parameters are densely distributed in P3. P3 is more tend to converge on training dataset without sufficient training for P1 and P2. So we reinitialize parameters randomly in P3 to ensure that the parameters in P1 and P2 are keeping updated. 
 
 \begin{table}[htbp]
 \centering
-\footnotesize
-\begin{tabular}{cccc}
+\begin{tabular}{llll}
     \hline
-     -&Sketch-a-Net(vallina)& DeepSketch 1& Ours\\
+     Iteration& 1&  2& 3\\
     \hline
-     model size& 64M&223M& 20M\\
-     trainable parameters&824w& 5510w& 94.1w\\
+     split 1& 70.8 \% & 73.8\% & 74.3\% \\
+     split 2& 71.2\% & 73.6\% & 74.3\% \\
+     split 3& 70.8\% & 72.5\% & 74.0\% \\
+    \hline
+\end{tabular}
+\caption{Training results with multi-iterations on 3 folders.}
+\label{tbl:iteration}
+\end{table}
+
+\subsection{Comparison of different methods in number of parameters and recognition accuracy}
+\label{ssec:cm_speed}
+SketchPointNet is derived from PointNet. It uses lots of shared architecture, which means less parameters compared with existing Image-based sketch recognition approaches. We performed Sketch-a-Net(vallina) ~\cite{Yu2015SketchaNetTB}, DeepSketch 1 ~\cite{Seddati2015DeepSketchDC} and SketchPointNet on Titan 1080 with tensorflow 1.2. The whole model of Sketch-a-Net ~\cite{Yu2015SketchaNetTB} and DeepSketch 2 \cite{Dupont2016DeepSketch2D} use different feature fusion method, which makes the whole models too large. So we only compare 3 end-to-end networks(Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet).
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lll}
+    \hline
+     Models& Trainable Parameters&  Storage\\
+    \hline
+     Sketch-a-Net(vallina) ~\cite{Yu2015SketchaNetTB}&8.24 million& 64M\\
+     DeepSketch 1 ~\cite{Seddati2015DeepSketchDC}& 55.1 million& 223M\\
+     Ours&\textbf{0.94} million& \textbf{20}M\\
     \hline
 \end{tabular}
 \caption{Comparison of trainable parameters.}
 \label{tbl:model_size}
 \end{table}
-
-
-
 
 \begin{table*}
 \centering
@@ -92,25 +108,41 @@ From the tabel ~\ref{tbl:model_size} we can see that our model need fewer traina
 
 \begin{table}[htbp]
 \centering
-\begin{tabular}{lc}
+\large
+\begin{tabular}{ll}
     \hline
-     models &accuracy\\
+     Models &Accuracy\\
     \hline
      HOG-SVM ~\cite{Eitz2012HowDH}& 56\% \\
      MKL-SVM ~\cite{LiHSG15} & 65.8\% \\
      FV-SP ~\cite{Schneider2014SketchCA} & 68.9\% \\
      LeNet ~\cite{LeCun1998GradientbasedLA}& 55.2\% \\
      Sketch-a-Net(vallina) ~\cite{Yu2015SketchaNetTB}& 72.6\% \\
-     Sketch-a-Net ~\cite{Yu2015SketchaNetTB}& 77.95\% \\
+     Sketch-a-Net ~\cite{Yu2015SketchaNetTB}& \textbf{77.95}\% \\
      DeepSketch 1 ~\cite{Seddati2015DeepSketchDC}& 75.42\% \\
      DeepSketch 2 ~\cite{Dupont2016DeepSketch2D}& 77.69\% \\
-     PointNet ~\cite{qi2017pointnet}& 46\% \\
+     \hline
      PointNet++ ~\cite{qi2017pointnetplusplus}& 66.53\% \\
      PointCNN ~\cite{1801.07791}& 67.72\% \\
-     Our Model& 73.5\% \\
+     Ours& 74.2\% \\
     \hline
 \end{tabular}
 \caption{Sketch recognition with different models.}
+\label{tbl:acc}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\large
+\begin{tabular}{ll}
+    \hline
+     Models &Accuracy(@5)\\
+    \hline
+     DeepSketch 2 ~\cite{Seddati2015DeepSketchDC}& 94.52\% \\
+     Ours& 92.3\% \\
+    \hline
+\end{tabular}
+\caption{Top-5 sketch recognition accuracy.}
 \label{tbl:acc}
 \end{table}
 
