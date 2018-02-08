@@ -1,88 +1,338 @@
 \section{Methodology}
 \label{sec:methodology}
 
-In this section, we introduce key steps of our works. We first detail how the architecture of SketchPointNet is designed. Next, we will show how to resample each sketch into a fixed number of points. At last, we explain that our group scheme guarantees the integrity of group patterns.
+\comments{
+In this section, we introduce key steps of our works. We first detail how the architecture of SketchPointNet is designed. Next, we will show how to resample each sketch into a fixed number of points. At last, we explain that our group scheme guarantees the integrity of group patterns.}
 
-\subsection{SketchPointNet}
+<<<<<<< HEAD
+<<<<<<< HEAD
+In this section, we will first introduce the network architecture of our SketchPointNet. Next, we describe the algorithm details of point sampling and grouping from sketch strokes.
+=======
+In this section, we will first introduce the network architecture of our SketchPointNet. Next, we describe the algorithm details of point sampling and grouping from sketch strokes. 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+
+
+\subsection{Architecture of SketchPointNet}
 \label{ssec:sketch_point_net}
 
-SketchPointNet recognizes sketches as time series. First, we resample each sketch into $N$ points. Second, in order to get local pattern information of each sketch, we group sketches for two times. Micro PointNet P1 summarizes patterns with group radius $r_1 = 0.1$. Micro PointNet P2 summarizes patterns in a large receptive field with $r_2 = 0.3$. At last, PointNet P3 summarizes pattern features generated from P2 for classification of 250 categories.
+Fig.~\ref{fig:sketchpointnet} shows the architecture of our SketchPointNet.
+%SketchPointNet recognizes sketches as time series. \cxj{Do you input the points as sequence?}
+%
+\cxj{Why do we need sampling?}.
+<<<<<<< HEAD
+\wxx{Points from sketches in SVG format are not evenly distributed. They are tend to distribute on the curve strokes. Because curve strokes need more segments to represent. While less points are distributed on the straight strokes. In order to make points evenly distribute on the strokes, we resample the input sketch $\mathcal{S}$ into $N$ points as a point set $\mathbb{P}=\{P_i|i=1,\ldots,N\}$}
+The directly captured stroke paths from various input devices are typically contact points that vary largely over different movement speeds and device sizes.
+To make them directly comparable, we resample the input sketch $\mathcal{S}$ into $N$ evenly distributed points as a point set $\mathbb{P}=\{P_i|i=1,\ldots,N\}$.
+=======
+The directly captured stroke paths from various input devices are typically contact points that vary largely over different movement speeds and device sizes. 
+To make them directly comparable, we resample the input sketch $\mathcal{S}$ into $N$ evenly distributed points as a point set $\mathbb{P}=\{P_i|i=1,\ldots,N\}$.  
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+%Moreover, the current Tensorflow only supports static graphs. Resampling the input sketch into a fixed number of points makes the implementation simple.
+%
+%
+\xjmd{Then we extract the sketch features hierarchically with two subnetworks (PN-1 and PN-2).
+<<<<<<< HEAD
+In each level, we group the sampled point set $\ptset$ into $K$ groups according to their spatial and temporal neighborhoods in different range.
+Stroke patterns are extracted using a mini-PointNet~\cite{qi2017pointnetplusplus} for each point group.
+}
+\cxj{Do you use the same structure as PointNet?}
+%
+The head of our SketchPointNet is again a PointNet (PN-3) to predict the probability for the $K$ categories with a soft-max\cxj{predict the probability for the $K$ categories with a soft-max?}.
 
-In detail, given a list of strokes $T^{init}$, we resample each sketch into N points. Each point has 3 dimension. The first two dimension denote the location of the point. The last dimension is the stroke order information(each point belong to a stroke). In order to extract features of local patterns, we resample $N_{g1}$ points as group centers every $t_1$ points and group the points around group centers with $r_1 = 0.1$ from the $N$ points. After the first time of grouping, we get $N_{g1}$ groups $\left\{ g_{1_i}| i = 1, ..., N_{g1} \right\}$. Each group contains $S_{g1}$ points. Next, we calculate relative position of group points according to group centers in each group. Then we get a $D_{g1}$-d pattern feature after each of $N_{g1}$ groups passing through the micro PointNet P1. Now, each group center corresponds to its group pattern feature.
 
-In a similar way, we resample points every $t_2$ points from the last group centers. Then we get $N_{g2}$ larger groups $\left\{ g_{2_i}| i = 1, ..., N_{g2} \right\}$ after grouping $g_1$ with $r_2 = 0.3$. Each larger group contains $S_{g2}$ smaller groups from $g_1$. We get $D_{g2}$-d feature as $g_2$ pattern features after feeding $S_{g2}$ smaller groups into micro PointNet P2. Concating $g_2$ pattern features and their corresponding centers($N_{g2} \times (D_{g2}+3)$). we feed them into PointNet P3. At last, SketchPointNet output 250 scores corresponding to 250 categories.
 
-SketchPointNet architecture(see Fig.~\ref{fig:sketchpointnet}) are borrowed from PointNet++ architecture. The differences between SketchPointNet and PointNet++ are how we select group centers and group the points. For PointNet++, they use iterative farthest point sampling(FPS) to choose group centers to ensure that group centers are evenly distributed. Sketch points are sparsely distributed on the strokes. We choose group centers every several points along the time series(each sketch represented as a time series). And sketches are different from 3d point clouds. For sketches, points densely distribute in the places where locate the patterns. FPS sample no more points in the place, which will make patterns lost. Besides, the way we choose group centers are more efficient than the way in PointNet++. When grouping the points around group centers, we have to set a proper number of points for each group. In PointNet++, if a number of group points  is greater than the setting number, they directly delete last extra points in the group. But we delete points every other point till the number of points in groups equals to the setting number. This can ensure the integrity of patterns(see Fig. ~\ref{fig:group}).
+While the overall architecture of our SketchPointNet is similar with PointNet++~\cite{qi2017pointnetplusplus}, the main difference lies on the sampling and grouping procedure.
+Targeting at 3D point clouds, PointNet++~\cite{qi2017pointnetplusplus} considers the spatial distribution of points in the 3D space.
+In contrast, not only the spatial pattern is important, the temporal pattern is also important for sketch recognition.
+%
+During our sampling and grouping, the temporal and spatial information is integrated together to extract the sketch pattern.
+=======
+In each level, we group the sampled point set $\ptset$ into $K$ groups according to their spatial and temporal neighborhoods in different range. 
+Stroke patterns are extracted using a PointNet~\cite{xx} for each point group. 
+}
+\cxj{Do you use the same structure as PointNet?}
+%
+The head of our SketchPointNet is again a PointNet (PN-3) to \cxj{predict the probability for the $K$ categories with a soft-max?}.   
 
-\subsection{Resample scenario}
-\label{ssec:resample_scenario}
+ 
 
-For each sketch, we sample it into a fixed number of points. Or we can sample each points in sketches with a given interval. In second case, the point number $\left\{ N_{P_i}| i = 1, ..., 20000 \right\}$ of sketches are different due to various total length of strokes of each sketch. The input to the network must have a fixed size. Because tensorflow 1.2 only support static graph. If we set input size as $\max \limits_{1 \le i \le 20000} N_{P_i}$, there are great waste for computing resources. Because only few sketches need large number of points to represent.
+While the overall architecture of our SketchPointNet is similar with PointNet++~\cite{qi2017pointnetplusplus}, the main difference lies on the sampling and grouping procedure.
+Targeting at 3D point clouds, PointNet++~\cite{qi2017pointnetplusplus} considers the spatial distribution of points in the 3D space.
+In contrast, not only the spatial pattern is important, the temporal pattern is also important for sketch recognition. 
+%
+During our sampling and grouping, the temporal and spatial information is integrated together to extract the sketch pattern. 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+
+\subsection{Transform Network}
+\cxj{Add more details. }
+
+<<<<<<< HEAD
+\wxx{We predict an affine transformation matrix by a T-net and affine transformation matrix on the input points. This step make sure that input sketches are spatially transformed and aligned.}
+=======
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+
+
+\subsection{Sketch Sampling}
+\label{ssec:resample}
+
+<<<<<<< HEAD
+%% key concept of resampling£º preserve local temporal and spatial relations£¿
+To preserve the sketch pattern xxxx
+sample various input sketches into a fixed number points,
+%
+Therefore, we sample $N_{pt}$ equidistantly spaced points along strokes.
+%
+We calculate the length of each stroke and the total length of all strokes is $L_{sum}=\sum^{M}_{i=1} L_i$, where $M$ is the stroke number.
+%
+Given the desired point number $N_{pt}$, we assign each stroke $N_i=\frac{L_i}{L_{sum}}N_{pt}$ points according to its stroke length $L_i$.
+Then we reample each stroke into $B_i$ points equidistantly along the stroke.
+%
+Fig.~\ref{fig:resample} shows the sampling results with different number of points.
+=======
+%% key concept of resamplingï¼š preserve local temporal and spatial relationsï¼Ÿ
+To preserve the sketch pattern xxxx 
+sample various input sketches into a fixed number points, 
+%
+Therefore, we sample $N_{pt}$ equidistantly spaced points along strokes. 
+%
+We calculate the length of each stroke and the total length of all strokes is $L_{sum}=\sum^{M}_{i=1} L_i$, where $M$ is the stroke number. 
+%
+Given the desired point number $N_{pt}$, we assign each stroke $N_i=\frac{L_i}{L_{sum}}N_{pt}$ points according to its stroke length $L_i$. 
+Then we reample each stroke into $B_i$ points equidistantly along the stroke. 
+%
+Fig.~\ref{fig:resample} shows the sampling results with different number of points. 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+\xjmd{We can see that the main structure is well preserved during the resampling procedure without losing much details, even with a very small number (N=128) of points.}
+
 
 \begin{figure}
-    \center
-    \includegraphics[width=3in]{images/resample2.png}
-    \fcaption{Resample the airplane and the tree into $N$(256 and 128) points.}
-    \label{fig:resample}
+	\center
+	\includegraphics[width=3in]{images/resample2.png}
+	\fcaption{Sketch resampling with different number of points. \cxj{Show different stroke in different color?}}
+	\label{fig:resample}
 \end{figure}
 
- We calculate each stroke length $\left\{ L_i| i = 1, ..., m \right\}$ from strokes $\left\{ T_i^{init}| i = 1, ..., m \right\}$. $m$ stands for stroke numbers. The total stroke length is $C$. Given the number of points $N$, we assign each stroke $B_i$ points $\left\{ B_i| i = 1, ..., m \right\}$ according to its corresponding stroke length $T_i$. Then we reample each stroke into $B_i$ points by using \$1 \cite{Wobbrock2007GesturesWL} resample scheme. The strokes after resampled are represented as $\left\{ T_i^{rsp}| i = 1, ..., m \right\}$. The total number of points in strokes $T^{rsp}$ is $N$. So, each sketch is represented as a $N$ points time series. In Fig.~\ref{fig:resample}, the airplane and the tree are resample into different number of points.
-
-\begin{algorithm}
-\label{alg:resample}
-    \caption{Resample each sketch into N points}
-    \KwIn{$\left\{ T_i^{init}| i = 1, ..., m \right\}$, resample number $N$}
-    \KwOut{$\left\{ T_i^{rsp}| i = 1, ..., m \right\}$}
-    $C = 0$\;
-    \For{$ i = 1; i \le m $}
-    {
-        $L_i = |T_i^{init}|$\;
-        $C = C + L_i$\;
-    }
-
-    \For{$ i = 1; i \le m $}
-    {
-        $B_i = \frac{L_i \times N}{C}$\;
-        $T_i^{rsp} = single\_stroke\_resample(T_i^{init}, B_i)$\;
-    }
-    return $\left\{ T_i^{rsp}| i = 1, ..., m \right\}$\;
-\end{algorithm}
 
 
-
-\subsection{Group scheme}
+\subsection{Point Grouping}
 \label{ssec:group_scheme}
 
-After resampling sketches, we get each of them represented as N points $\left\{P_i| i = 1,..., N\right\}$. For a sketch, We resample a series of points $\left\{P_{1}, P_{1+t}, P_{1+2*t}, ..., P_{1+(N_g-1)*t}\right\}$ every $t$ points as group center from the N Points. Then we group points according to group center within radius $r$. After grouping the sketch, we get $N_{g} \times S_{g}^{init}$. $N_{g}$ is the number of the groups. $S_{g}^{init}$ is the points number of each group. In a similar way, we group the sketch for more times according to last grouping center.
+\xjmd{To extract local features of the input sketch, we group the sampled points and feed them into a PointNet.}
+%
+<<<<<<< HEAD
+Given a desired number of groups $N_{group}$, we first sample $N_{group}$ points as the group centers from the input sketch \wxx{from the input $N$ points with a fixed interval} \cxj{using the same resample method in Sec.~\ref{ssec:resample}?}
+%
+Then we extract the local feature for each group from the points in a its surrounding area in a radius $r$.
+%
+While the sketch is resampled evenly distributed temporarily in the previous sampling step, the point density is not even in the spatial
+domain.
+%
+We resample the partial sketch in a local region to a fixed number $K_{group}$ of points equidistantly.
+%
+As Fig.~\ref{fig:group} shows, the points in a local region
+with different radius present different local patterns.
+Both temporal and spatial patterns are preserved during the grouping procedure, which are essential for sketch recognition.
+=======
+Given a desired number of groups $N_{group}$, we first sample $N_{group}$ points as the group centers from the input sketch \cxj{using the same resample method in Sec.~\ref{ssec:resample}?} 
+%
+Then we extract the local feature for each group from the points in a its surrounding area in a radius $r$. 
+%
+While the sketch is resampled evenly distributed temporarily in the previous sampling step, the point density is not even in the spatial 
+domain. 
+%
+We resample the partial sketch in a local region to a fixed number $K_{group}$ of points equidistantly.
+%
+As Fig.~\ref{fig:group} shows, the points in a local region 
+with different radius present different local patterns.
+Both temporal and spatial patterns are preserved during the grouping procedure, which are essential for sketch recognition. 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
 
-The input group must have a fixed point number $S_g$. But with a fixed group radius $r$, group point numbers are very different from each other. After grouping the points, We get a series of groups. One of the groups contains $S_g^{init}$ group points $\left\{ Z_i| i = 1, ..., S_g^{init} \right\}$. If the point number $S_g^{init}$ is less than $S_{g}$, we pad the group center points into the group till the group size is $S_{g}$. If the point number $S_g^{init}$ is greater than $S_{g}$, we delete group points every other points in the group till the point numbers is $S_{g}$. We develop an algorithm to guarantee the integrity of group patterns when deleting extra points.
 
-\begin{algorithm}
-\label{alg:group}
-    \caption{Delete extra points until group size is $S_g$}
-    \KwIn{$\left\{ Z_i^{init}| i = 1, ..., m \right\}$, group size threshold $S_g$}
-    \KwOut{$\left\{ Z_i| i = 1, ..., S_g \right\}$}
-    $i = 2$\;
-    $Z = Z^{init}$\;
-    \While{$|Z| < S_g$}
-    {
-        \If{$i = |Z|+1$ or $i = |Z|+2$}
-        {
-            $i = 2$\;
-        }
-        del $Z_i$\;
-        $i = i+1$\;
-    }
-    return $\left\{ Z_i| i = 1, ..., S_g \right\}$\;
-\end{algorithm}
+
+
+\subsection{Group Pattern Extraction}
+
+<<<<<<< HEAD
+We use the PointNet~\cite{qi2017pointnet} to extract the sketch pattern in a local region that contains a flexible number of points.
+%
+%After the point grouping step, we feed a mini PointNet with $N_g$ groups with data size $N_g \times K_g \times C$ to extract the sketch pattern for recognition.
+%
+For each group, a mini PointNet is fed with $K_g$ points in its local region with data size $K_g \times C_{in}$.
+Here, $K_g$ is the number of points in a group, and $C$ is the number of data channel of each point.
+Each mini PointNet consists of $K_g$ shared-weight three-layer perceptrons and a max-pooling layer to aggregate features of the $K_g$ points.
+%
+The output of the a PointNet is a $C_{out}$ dimensional feature vector.
+%Here, $N_g$ is the number of local groups, $K_g$ is the number of points in each group, $C$ is the number of data channel of each point.
+
+Initially, we have the 2{D} coordinates and stroke order of each point.
+=======
+=======
+In this section, we will first introduce the network architecture of our SketchPointNet. Next, we describe the algorithm details of point sampling and grouping from sketch strokes. 
+
+
+\subsection{Architecture of SketchPointNet}
+\label{ssec:sketch_point_net}
+
+Fig.~\ref{fig:sketchpointnet} shows the architecture of our SketchPointNet.
+%SketchPointNet recognizes sketches as time series. \cxj{Do you input the points as sequence?}
+%
+\cxj{Why do we need sampling?}.
+The directly captured stroke paths from various input devices are typically contact points that vary largely over different movement speeds and device sizes. 
+To make them directly comparable, we resample the input sketch $\mathcal{S}$ into $N$ evenly distributed points as a point set $\mathbb{P}=\{P_i|i=1,\ldots,N\}$.  
+%Moreover, the current Tensorflow only supports static graphs. Resampling the input sketch into a fixed number of points makes the implementation simple.
+%
+%
+\xjmd{Then we extract the sketch features hierarchically with two subnetworks (PN-1 and PN-2).
+In each level, we group the sampled point set $\ptset$ into $K$ groups according to their spatial and temporal neighborhoods in different range. 
+Stroke patterns are extracted using a PointNet~\cite{xx} for each point group. 
+}
+\cxj{Do you use the same structure as PointNet?}
+%
+The head of our SketchPointNet is again a PointNet (PN-3) to \cxj{predict the probability for the $K$ categories with a soft-max?}.   
+
+ 
+
+While the overall architecture of our SketchPointNet is similar with PointNet++~\cite{qi2017pointnetplusplus}, the main difference lies on the sampling and grouping procedure.
+Targeting at 3D point clouds, PointNet++~\cite{qi2017pointnetplusplus} considers the spatial distribution of points in the 3D space.
+In contrast, not only the spatial pattern is important, the temporal pattern is also important for sketch recognition. 
+%
+During our sampling and grouping, the temporal and spatial information is integrated together to extract the sketch pattern. 
+
+\subsection{Transform Network}
+\cxj{Add more details. }
+
+
+
+\subsection{Sketch Sampling}
+\label{ssec:resample}
+
+%% key concept of resamplingï¼š preserve local temporal and spatial relationsï¼Ÿ
+To preserve the sketch pattern xxxx 
+sample various input sketches into a fixed number points, 
+%
+Therefore, we sample $N_{pt}$ equidistantly spaced points along strokes. 
+%
+We calculate the length of each stroke and the total length of all strokes is $L_{sum}=\sum^{M}_{i=1} L_i$, where $M$ is the stroke number. 
+%
+Given the desired point number $N_{pt}$, we assign each stroke $N_i=\frac{L_i}{L_{sum}}N_{pt}$ points according to its stroke length $L_i$. 
+Then we reample each stroke into $B_i$ points equidistantly along the stroke. 
+%
+Fig.~\ref{fig:resample} shows the sampling results with different number of points. 
+\xjmd{We can see that the main structure is well preserved during the resampling procedure without losing much details, even with a very small number (N=128) of points.}
+
+
+\begin{figure}
+	\center
+	\includegraphics[width=3in]{images/resample2.png}
+	\fcaption{Sketch resampling with different number of points. \cxj{Show different stroke in different color?}}
+	\label{fig:resample}
+\end{figure}
+
+
+
+\subsection{Point Grouping}
+\label{ssec:group_scheme}
+
+\xjmd{To extract local features of the input sketch, we group the sampled points and feed them into a PointNet.}
+%
+Given a desired number of groups $N_{group}$, we first sample $N_{group}$ points as the group centers from the input sketch \cxj{using the same resample method in Sec.~\ref{ssec:resample}?} 
+%
+Then we extract the local feature for each group from the points in a its surrounding area in a radius $r$. 
+%
+While the sketch is resampled evenly distributed temporarily in the previous sampling step, the point density is not even in the spatial 
+domain. 
+%
+We resample the partial sketch in a local region to a fixed number $K_{group}$ of points equidistantly.
+%
+As Fig.~\ref{fig:group} shows, the points in a local region 
+with different radius present different local patterns.
+Both temporal and spatial patterns are preserved during the grouping procedure, which are essential for sketch recognition. 
+
+
+
+
+\subsection{Group Pattern Extraction}
+
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+We use the PointNet~\cite{qi2017pointnet} to extract the sketch pattern in a local region that contains a flexible number of points. 
+%
+%After the point grouping step, we feed a mini PointNet with $N_g$ groups with data size $N_g \times K_g \times C$ to extract the sketch pattern for recognition.
+%
+For each group, a mini PointNet is fed with $K_g$ points in its local region with data size $K_g \times C_{in}$. 
+Here, $K_g$ is the number of points in a group, and $C$ is the number of data channel of each point.
+Each mini PointNet consists of $K_g$ shared-weight three-layer perceptrons and a max-pooling layer to aggregate features of the $K_g$ points.
+%
+The output of the a PointNet is a $C_{out}$ dimensional feature vector. 
+%Here, $N_g$ is the number of local groups, $K_g$ is the number of points in each group, $C$ is the number of data channel of each point.
+
+Initially, we have the 2{D} coordinates and stroke order of each point. 
+<<<<<<< HEAD
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+=======
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+We translate each point into a local frame relative to the group center of each group.
+Therefore, the data channel $C^1_{in}=2+1$ for the first PointNet PN-1, including the 2D local coordinates and 1-D stroke order.
+The output of PN-1 is a $C^1_{out}$ dimensional feature vector for each group.
+
+%
+%
+Different with PointNet++~\cite{qi2017pointnetplusplus} for 3D point clouds, the stroke order does matters for sketch recognition, because human typically draw the overall shape and then add fine details later.
+%
+The strokes drawn earlier have more impact effects for recognizing a coarse sketch.
+%
+
+Then, increasing the radius $r_2$ for grouping points, which is equivalent to increasing the receptive field, we extract sketch patterns in a higher level.
+%
+<<<<<<< HEAD
+<<<<<<< HEAD
+Therefore, for the second PointNet PN-2, the input is the $K_{g2} \times C^2_{in}$ data, where $K_{g2}$ is the number of points in the local region of a group, $C^2_{in}=2+1+C^1_{out}$ for each group, including the 2-D local coordinate of the group center, 1-D stroke order and the $C^1_{out}$-D feature extracted for the local region from the first PointNet.
+=======
+Therefore, for the second PointNet PN-2, the input is the $K_{g2} \times C^2_{in}$ data, where $K_{g2}$ is the number of points in the local region of a group, $C_2=2+1+C^1_{out}$ for each group, including the 2-D local coordinate of the group center, 1-D stroke order and the $C^1_{out}$-D feature extracted for the local region from the first PointNet. 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+=======
+Therefore, for the second PointNet PN-2, the input is the $K_{g2} \times C^2_{in}$ data, where $K_{g2}$ is the number of points in the local region of a group, $C_2=2+1+C^1_{out}$ for each group, including the 2-D local coordinate of the group center, 1-D stroke order and the $C^1_{out}$-D feature extracted for the local region from the first PointNet. 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+%
+The output of PN-2 is a $C^2_{out}$-D feature vector for each group.
+
+\subsection{Sketch Classification}
+\label{ssec:classification}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+After the two-level local pattern extraction, we feed the $N_{g2} \times C^2_{out}$ data into the third mini PointNet PN-3, which produces $C^{3}_{out}$ dimensional vector as the global feature of the entire sketch.
+%
+\cxj{More details about the FC layers and loss functions.}
+The extracted global feature is fed into a four-layer perceptron to predict the scores for $K_c$ categories.
+\wxx{Then we calculate $K_c$ softmax scores from predicted scores. With cross softmax scores, we use cross entropy as our loss function.}
+=======
+=======
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+After the two-level local pattern extraction, we feed the $N_{g2} \times C^2_{out}$ data into the third mini PointNet PN-3, which produces $C^{3}_{out}$ dimensional vector as the global feature of the entire sketch. 
+%
+\cxj{More details about the FC layers and loss functions.}
+The extracted global feature is fed into a four-layer perceptron to predict the scores for $K_c$ categories. 
+<<<<<<< HEAD
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+=======
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
+
+
+
+
+
+
 
 \begin{figure}
     \center
     \includegraphics[width=3in]{images/group.png}
     \fcaption{Comparison of dealing with extra points.}
     \label{fig:group}
+<<<<<<< HEAD
+\end{figure}
+=======
 \end{figure}
 
-All N points in a sketch are chronological. Grouping do not undermine the order of time series. The points in a group are still arranged in original chronological order. In Fig.~\ref{fig:group} (B), The initial group contains $S_g^{init}$ points which is greater than $S_g$ points. If we directly delete the last $|S_g^{init}-S_g|$ points. From Fig.~\ref{fig:group} (C), we can see that there are great loss of the pattern.  Algorithm ~\ref{alg:group} makes sure of the existence of the whole pattern(see Fig.~\ref{fig:group} (D)).
 
 
+>>>>>>> 8450239b9484edee43dc0281ee3e9afd8bc1a2b7
