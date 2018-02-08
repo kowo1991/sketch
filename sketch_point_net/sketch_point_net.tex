@@ -7,14 +7,25 @@
 
 \usepackage{spconf,amsmath,graphicx}
 \usepackage{epstopdf}
+\usepackage{amssymb}
 
 
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage{algpseudocode}
 \usepackage{amsmath}
 
+\usepackage{color}
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+
+\newcommand{\comments}[1]{}
+\newcommand{\cxj}[1]{\textcolor[rgb]{1.00,0.00,0.00}{(xuejin:#1)}}
+\newcommand{\xjmd}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+
+%%%% definitions
+\newcommand{\ptset} {\mathbb{P}}
 
 \makeatletter
     \newcommand\fcaption{\def\@captype{figure}\caption}
@@ -30,8 +41,8 @@
 %
 % Single address.
 % ---------------
-\name{Author(s) Name(s)}
-\address{Author Affiliation(s)}
+\name{Paper XXX}
+\address{ }
 %
 % For example:
 % ------------
