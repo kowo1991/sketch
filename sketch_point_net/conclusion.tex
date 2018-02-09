@@ -1,4 +1,10 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have proposed a sketch recogniton model based on points, which we call SketchPointNet. The approach regards a sketch as a series of points, which take full advantage of the sparsity of the sketch. So SketchPointNet has less trainable parameters. Our experiments shows that SketchPointNet also achieves a high recognition accuracy compared with image-based approaches. Besides, SketchPointNet achieves best recognition accuracy on TU-Berlin dataset among point-based recognition models.
+In this paper, we propose SketchPointNet, a compact deep neural network for robust ketch recognition.
+%
+Our network directly consumes 2D points on a freehand sketch, which are sparsely distributed in the 2D space. 
+%
+By sampling and grouping points while considering both temporal order and spatial distribution, local features are learned hierarchically using three mini PointNets. 
+%
+The experiments on the challenging TU-Berlin dataset demonstrated that our SketchPointNet achieves a high recognition accuracy, and significantly reduces the number of network parameters. 
