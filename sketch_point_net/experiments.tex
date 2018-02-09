@@ -10,16 +10,8 @@ We do a group of experiments to compare our method with other methods in both re
 We performed three-fold cross validation within the dataset using 
 the same strategy with previous methods~\cite{Yu2015SketchaNetTB, Dupont2016DeepSketch2D}.
 %Like previous works, we use 3-fold cross-validation within the dataset. 
-Dataset augmentation is also performed to ease over-fitting problem, same as~\cite{Yu2015SketchaNetTB}.
-
-\comments{
-\begin{figure}[htbp]
-    \center
-    \includegraphics[width=3in]{images/aug_data.png}
-    \fcaption{Sketch data augmentation.}
-    \label{fig:aug_data}
-\end{figure}
-}
+Dataset augmentation is also performed to ease the over-fitting problem, same as~\cite{Yu2015SketchaNetTB}.
+\\
 
 
 \noindent \textbf{Training strategy.} 
@@ -27,20 +19,22 @@ Dataset augmentation is also performed to ease over-fitting problem, same as~\ci
 Our SketchPointNet, \xjmd{which is composed of all fully-connected layers for pattern extraction,} can be trained end-to-end by back-propagation and SGD, with the softmax classification loss.
 %
 However, the entire network is easily converged to a local optima and suffers from overfitting. 
-Moreover, the third pointnet PN-3 play different roles from PN-1 and PN-2. It captures more global pattern for classification. 
+Moreover, the third pointnet PN-3 plays different roles from PN-1 and PN-2. It captures more global pattern for classification. 
+%
+\xjmd{For the multilayer perceptrons in the entire networks, we use paramertes mlp(8,16,64), mlp(64,16,xxx???) in PN-1, mlp(32,32,128),mlp(128,64,xxxx??) in PN-2, mlp(64,128,1024),mlp(512,256,250) in PN-3.}
 %
 The network parameters are densely distributed in PN-3, which tends to converge on the training set without sufficient training for PN-1 and PN-2. 
-So we re-initialize parameters randomly in PN-3 to ensure that the parameters in PN-1 and PN-2 are keeping updated. 
+So we re-initialize parameters randomly in PN-3 to ensure that the parameters in PN-1 and PN-2 are trained sufficiently. 
 
 We developed a three-step training strategy to fine-tune each mini pointnets.
 %
 In the first step, we randomly initialize all the parameters in our SketchPointNet and  train it in an end-to-end fashion.
 %
-In the second step, we initialize the first two pointnets PN-1 and PN-2 for feature extraction with the parameters obtained in the first step, and randomly initialize the parameters in the third pointnet PN-3. Then we retrain the entire network.
+In the second step, we initialize the first two pointnets PN-1 and PN-2 for local pattern extraction with the parameters obtained in the first step, and randomly initialize the parameters in the third pointnet PN-3. Then we retrain the entire network.
 %
 In the third step, repeat the second step for three times.
 %
-Table ~\ref{tbl:iteration} shows the improvement with our three-step training strategy.
+Table ~\ref{tbl:iteration} shows the improvement of recognition accuracy with our three-step training strategy.
 %, we can see that the recognition results on evaluation dataset are getting higher and higher after numbers of iterations of training. It shows that our training strategy is effective. 
 
 \begin{table}[htbp]
@@ -61,8 +55,7 @@ Table ~\ref{tbl:iteration} shows the improvement with our three-step training st
 
 
 \noindent\textbf{Accuracy and Model Size.}
-\label{ssec:cm_speed}
-
+%
 We compare our SketchPointNet with state-of-the-art approaches on the TU-Berlin benchmark, considering both the recognition accuracy and model compactness.
 %
 Comparing with traditional techniques using hand-crafted features, our SketchPointNet performs significantly better.
@@ -74,20 +67,21 @@ The second type includes PointNet++~\cite{qi2017pointnetplusplus}, PointCNN~\cit
 
 
 The comparison is presented in Table~\ref{tb:acc-size}. 
-As shown, our algorithm achieve comparable performance $74.2x\%$ with image-based convolutional networks. 
+As shown, our algorithm achieves comparable performance \xjmd{$74.2x\%$} with image-based convolutional networks. 
 %
 Compared to the vanilla version without any fusion part, our SketchPointNet achieves higher performance than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB}, and comparable results with DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
 However, as designed, our SketchPointNet is very compact while using lots of shared weights. 
-Ours has about $10$ times less parameters than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB} and $60$ times less parameters than DeepSketch 1~\cite{Seddati2015DeepSketchDC}
+Ours has about $10$ times less parameters than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB} and $60$ times less parameters than DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
 %
-The models having the highest recognition accuracy ($77.95\%$ for Sketch-a-Net~\cite{Yu2015SketchaNetTB}, and $77.69\%$ for DeepSketch 2~\cite{Dupont2016DeepSketch2D}) both employ a complex fusion step, which makes their network significantly larger ($xx$).
+The models having the highest recognition accuracy ($77.95\%$ for Sketch-a-Net~\cite{Yu2015SketchaNetTB}, and $77.69\%$ for DeepSketch 2~\cite{Dupont2016DeepSketch2D}) both employ a complex fusion step, which makes their network significantly larger \xjmd{($xx$)}.
 %
 We believe that our method could also be greatly improved in the future by feature fusion. 
 
 
 When comparing with the point-based methods (PointNet++~\cite{qi2017pointnetplusplus} and PointCNN~\cite{1801.07791}), our SketchPointNet improves the recognition accuracy by more than $6\%$. 
-This is mainly because that they do not consider temporal structure during stroke drawing. 
+This is mainly because our algorithm considers both temporal and spatial patterns while they focus on the spatial structure only. 
 
+\comments{
 \begin{table*}
 \centering
 \begin{tabular}{llll}
@@ -108,16 +102,9 @@ This is mainly because that they do not consider temporal structure during strok
 \caption{Comparing with PointNet and PointNet++}
 \label{tbl:pointnet_cp}
 \end{table*}
-
-\comments{
-	
-	%
-	We performed Sketch-a-Net(vallina) ~\cite{Yu2015SketchaNetTB}, DeepSketch 1 ~\cite{Seddati2015DeepSketchDC} and SketchPointNet on Titan 1080 with Tensorflow 1.2. The whole model of Sketch-a-Net~\cite{Yu2015SketchaNetTB} and DeepSketch 2 \cite{Dupont2016DeepSketch2D} use different feature fusion method, which makes the whole models significantly larger. 
-	So we only compare 3 end-to-end networks(Sketch-a-Net(vallina), DeepSketch 1 and SketchPointNet).
-	
-	
-From the tabel ~\ref{tbl:model_size} we can see that our model need fewer trainable parameters than Sketch-a-Net(vallina) and DeepSketch 1. Although our model are smaller compared with existing DNN-based appraches. We still achieve a high recognition accuracy.
 }
+
+
 \begin{table}[htbp]
 \centering
 \caption{Comparison with state-of-the-art results on both recognition accuracy and model compactness.}
@@ -132,10 +119,11 @@ From the tabel ~\ref{tbl:model_size} we can see that our model need fewer traina
      FV-SP \cite{Schneider2014SketchCA} & 68.9\%  & xx\\
      LeNet \cite{LeCun1998GradientbasedLA}& 55.2\%  & xx\\
      \hline
-     Sketch-a-Net(vallina) \cite{Yu2015SketchaNetTB}& 72.6\% & 8.24M \\
      Sketch-a-Net \cite{Yu2015SketchaNetTB}& \textbf{77.95}\%  & xx\\
-     DeepSketch 1 \cite{Seddati2015DeepSketchDC}& 75.42\%  & 55.10M\\
      DeepSketch 2 \cite{Dupont2016DeepSketch2D}& 77.69\%  & xx\\
+     \hline
+     DeepSketch 1 \cite{Seddati2015DeepSketchDC}& 75.42\%  & 55.10M\\
+     Sketch-a-Net(vallina) \cite{Yu2015SketchaNetTB}& 72.6\% & 8.24M \\
      \hline
      PointNet++ \cite{qi2017pointnetplusplus}& 66.53\%  & xx\\
      PointCNN \cite{1801.07791}& 67.72\%  & xx\\
@@ -146,11 +134,13 @@ From the tabel ~\ref{tbl:model_size} we can see that our model need fewer traina
 
 
 
-Fig.~\ref{fig:resshow} shows some results. Although our network can handle some challenging cases(green). SketchPointNet still fail on very ambiguous cases(the reds are predictions, the blacks are ground truth for each case).
+Fig.~\ref{fig:resshow} shows two groups of examples which our SketchPoint is good at and fails to recognize, respectively.
+Although our network can handle some challenging cases(green). SketchPointNet still fails on very ambiguous cases (the reds are predictions, the blacks are ground truth for each case).
+\cxj{more explaination according to the examples. }
 
 \begin{figure}[htbp]
     \center
     \includegraphics[width=3in]{images/res.png}
-    \fcaption{Illustration of recognition successes (green) and failures (red).}
+    \fcaption{Illustration of recognition successes (green) and failures (red). \cxj{revise this figure.}}
     \label{fig:resshow}
 \end{figure}

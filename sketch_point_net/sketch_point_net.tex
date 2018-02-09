@@ -24,6 +24,7 @@
 \newcommand{\cxj}[1]{\textcolor[rgb]{1.00,0.00,0.00}{(xuejin:#1)}}
 \newcommand{\xjmd}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
 
+\newcommand{\para}[1]{\noindent\textbf{#1}}
 \newcommand{\wxx}[1]{\textcolor[rgb]{1.00,0.00,1.00}{(wxx:#1)}}
 %%%% definitions
 \newcommand{\ptset} {\mathbb{P}}
@@ -38,11 +39,11 @@
 
 % Title.
 % ------
-\title{SKETCHPOINTNET: Learn to recognize sketches as time serieses}
+\title{SketchPointNet: A compact network for robust sketch recognition}
 %
 % Single address.
 % ---------------
-\name{Paper XXX}
+\name{Paper 1938}
 \address{ }
 %
 % For example:
@@ -70,11 +71,22 @@
 \maketitle
 %
 \begin{abstract}
-Sketch recognition has been studied for years. In previous works, sketches are only treated as images, which ignores the sparse nature of sketches. In this paper, we retreat each sketch as a series of track points and propose a neural network to recognize it. Our network, termed as SketchPointNet, achieves the highest recognition accuracy among point-based sketch recognition approaches. We use a novel group scheme which investigates the timing characteristic of sketch points, which ensures the integrity of local patterns. SketchPointNet needs very few parameters compared with image-based sketch recognition approaches. Meanwhile, it still achieves a high recognition accuracy which is close to the state-of-the-art approaches on TU-Berlin dataset.
+Sketch recognition has been studied for many years. 
+With the great success of deep networks on image recognition, we propose a novel point-based network, named SketchPointNet, which is both robust and compact for sketch recognition. 
+%
+Sketch features are hierarchically learned by three mini PointNets, by successively grouping 2D points in a bottom-up fashion. 
+%
+Our SketchPointNet takes both temporal and spatial information in strokes into account during point sampling and grouping.
+%
+Because it directly consumes the sparse points, our SketchPointNet is very compact and efficient. 
+%
+Compared with state-of-the-art techniques, SketchPointNet achieves comparable performance on the challenging TU-Berlin dataset while significantly reduces the number of network parameters. 
+
+ 
 \end{abstract}
 
 \begin{keywords}
-Point-based sketch recognition, parameters, image-based sketch recognition, SketchPointNet, recognition accuracy
+Sketch recognition, point set, deep neural network, stroke pattern 
 \end{keywords}
 
 \input{introduction}
