@@ -16,12 +16,12 @@ Dataset augmentation is also performed to ease the over-fitting problem, same as
 
 \noindent \textbf{Training strategy.}
 %
-Our SketchPointNet, \xjmd{which is composed of all fully-connected layers for pattern extraction,} can be trained end-to-end by back-propagation and SGD \wxx{Adam}, with the softmax classification loss.
+Our SketchPointNet, which is composed of all fully-connected layers for pattern extraction, can be trained end-to-end by back-propagation and Adam, with the softmax classification loss.
 %
 However, the entire network is easily converged to a local optima and suffers from overfitting.
 Moreover, the third pointnet PN-3 plays different roles from PN-1 and PN-2. It captures more global pattern for classification.
 %
-\xjmd{For the multilayer perceptrons in the entire networks, we use paramertes mlp(8,16,64), mlp(64,16,2) in PN-1, mlp(32,32,128),mlp(128,64,29) in PN-2, mlp(64,128,1024),mlp(512,256,250) in PN-3.}
+For the multilayer perceptrons in the entire networks, we use paramertes mlp(8,16,64), mlp(64,16,2) in PN-1, mlp(32,32,128),mlp(128,64,29) in PN-2, mlp(64,128,1024),mlp(512,256,250) in PN-3.
 %
 The network parameters are densely distributed in PN-3, which tends to converge on the training set without sufficient training for PN-1 and PN-2.
 So we re-initialize parameters randomly in PN-3 to ensure that the parameters in PN-1 and PN-2 are trained sufficiently.
@@ -67,13 +67,13 @@ The second type includes PointNet++~\cite{qi2017pointnetplusplus}, PointCNN~\cit
 
 
 The comparison is presented in Table~\ref{tb:acc-size}.
-As shown, our algorithm achieves comparable performance \xjmd{$74.22\%$} with image-based convolutional networks.
+As shown, our algorithm achieves comparable performance $74.22\%$ with image-based convolutional networks.
 %
 Compared to the vanilla version without any fusion part, our SketchPointNet achieves higher performance than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB}, and comparable results with DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
 However, as designed, our SketchPointNet is very compact while using lots of shared weights.
-Ours has about $10$ times less parameters than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB} and $60$ times less parameters than DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
+Ours has about $5$ times less parameters than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB} and $30$ times less parameters than DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
 %
-The models having the highest recognition accuracy ($77.95\%$ for Sketch-a-Net~\cite{Yu2015SketchaNetTB}, and $77.69\%$ for DeepSketch 2~\cite{Dupont2016DeepSketch2D}) both employ a complex fusion step, which makes their network significantly larger \xjmd{($xx$)}.
+The models having the highest recognition accuracy ($77.95\%$ for Sketch-a-Net~\cite{Yu2015SketchaNetTB}, and $77.69\%$ for DeepSketch 2~\cite{Dupont2016DeepSketch2D}) both employ a complex fusion step, which makes their network significantly larger.
 %
 We believe that our method could also be greatly improved in the future by feature fusion.
 
@@ -114,20 +114,20 @@ This is mainly because our algorithm considers both temporal and spatial pattern
     \hline
      Method & Accuracy & \#Parameters\\
     \hline
-     HOG-SVM \cite{Eitz2012HowDH}& 56\% & xx \\
-     MKL-SVM \cite{LiHSG15} & 65.8\%  & xx \\
-     FV-SP \cite{Schneider2014SketchCA} & 68.9\%  & xx\\
-     LeNet \cite{LeCun1998GradientbasedLA}& 55.2\%  & xx\\
+     HOG-SVM \cite{Eitz2012HowDH}& 56\% & - \\
+     MKL-SVM \cite{LiHSG15} & 65.8\%  & - \\
+     FV-SP \cite{Schneider2014SketchCA} & 68.9\%  & -\\
+     LeNet \cite{LeCun1998GradientbasedLA}& 55.2\%  & -\\
      \hline
-     Sketch-a-Net \cite{Yu2015SketchaNetTB}& \textbf{77.95}\%  & xx\\
-     DeepSketch 2 \cite{Dupont2016DeepSketch2D}& 77.69\%  & xx\\
+     Sketch-a-Net \cite{Yu2015SketchaNetTB}& \textbf{77.95}\%  & 8.2M\\
+     DeepSketch 2 \cite{Dupont2016DeepSketch2D}& 77.69\%  & 276M\\
      \hline
-     DeepSketch 1 \cite{Seddati2015DeepSketchDC}& 75.42\%  & 55.10M\\
-     Sketch-a-Net(vallina) \cite{Yu2015SketchaNetTB}& 72.6\% & 8.24M \\
+     DeepSketch 1 \cite{Seddati2015DeepSketchDC}& 75.42\%  & 55.1M\\
+     Sketch-a-Net(vallina) \cite{Yu2015SketchaNetTB}& 72.6\% & 8.2M \\
      \hline
-     PointNet++ \cite{qi2017pointnetplusplus}& 66.53\%  & xx\\
-     PointCNN \cite{1801.07791}& 67.72\%  & xx\\
-     Ours& 74.22\%  & \textbf{1.73M}\\
+     PointNet++ \cite{qi2017pointnetplusplus}& 66.53\%  & 1.73M\\
+     PointCNN \cite{1801.07791}& 67.72\%  & -\\
+     Ours& 74.22\%  & \textbf{1.64M}\\
     \hline
 \end{tabular}
 \end{table}
@@ -136,11 +136,10 @@ This is mainly because our algorithm considers both temporal and spatial pattern
 
 Fig.~\ref{fig:resshow} shows two groups of examples which our SketchPoint is good at and fails to recognize, respectively. PointNet investigate critical points for each class. While SketchPointNet summarizes critical patterns for each class. In Fig.~\ref{fig:resshow} (A), the instance is more like a human for the whole sketch. But with a panda head, SketchPointNet recognizes it as panda.
 Although our network can handle some challenging cases(see the first row in the Fig.~\ref{fig:resshow}). It still fails on very ambiguous cases(see the second row in the Fig.~\ref{fig:resshow}).
-\cxj{more explaination according to the examples. }
 
 \begin{figure}[htbp]
     \center
     \includegraphics[width=3in]{images/res.png}
-    \fcaption{Illustration of recognition successes (the first row) and failures (the second row). The most top predicting scores are on the right side of each sketch. \cxj{revise this figure.}}
+    \fcaption{Illustration of recognition successes (the first row) and failures (the second row). The most top predicting scores are on the right side of each sketch.}
     \label{fig:resshow}
 \end{figure}
