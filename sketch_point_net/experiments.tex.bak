@@ -16,7 +16,7 @@ Dataset augmentation is also performed to ease the over-fitting problem, same as
 
 \noindent \textbf{Training strategy.}
 %
-Our SketchPointNet, \xjmd{which is composed of all fully-connected layers for pattern extraction,} can be trained end-to-end by back-propagation and SGD \wxx{Adam}, with the softmax classification loss.
+Our SketchPointNet, \xjmd{which is composed of all fully-connected layers for pattern extraction,} can be trained end-to-end by back-propagation and SGD, with the softmax classification loss.
 %
 However, the entire network is easily converged to a local optima and suffers from overfitting.
 Moreover, the third pointnet PN-3 plays different roles from PN-1 and PN-2. It captures more global pattern for classification.
