@@ -80,7 +80,7 @@ The models having the highest recognition accuracy ($77.95\%$ for Sketch-a-Net~\
 We believe that our method could also be greatly improved in the future by feature fusion.
 
 
-Compared with the point-based methods (PointNet++~\cite{qi2017pointnetplusplus} and PointCNN~\cite{1801.07791}), our SketchPointNet improves the recognition accuracy by more than $6\%$, without increasing model parameters.
+Compared with the point-based methods (PointNet++~\cite{qi2017pointnetplusplus} and PointCNN~\cite{1801.07791}), our SketchPointNet improves the recognition accuracy by more than $6\%$, without increasing model parameters. 
 This is mainly because our algorithm considers both temporal and spatial patterns while they focus on the spatial structure only.
 
 \comments{
@@ -137,15 +137,15 @@ This is mainly because our algorithm considers both temporal and spatial pattern
 
 
 
-Fig.~\ref{fig:resshow} shows two groups of examples.
+Fig.~\ref{fig:resshow} shows two groups of examples which our SketchPoint is good at and fails to recognize, respectively. 
 In the top row, the three examples are correctly recognized as their ground-truth categories.
 Compared to PointNet, which investigates critical points for each class, our SketchPointNet extracts critical patterns for each category.
+% 
+Take the first sketch as example, the head part is recognized as a panda, though its pose is more like an human. Similarly, SketchPointNet recognizes the second sketch as tiger mainly from the head part and the stripes on its body. 
 %
-Take the first sketch as example, the head part is recognized as a panda, though its pose is more like an human. Similarly, SketchPointNet recognizes the second sketch as tiger mainly from the head part and the stripes on its body.
-%
-Although our network can handle some challenging cases, there are still some challenging cases.
+Although our network can handle some challenging cases, there are still some challenging cases. 
 As the bottom row in Fig.~\ref{fig:resshow} shows, the sketches are extremely ambiguous cases.
-%, due to the limit of painting skills of non-expert users.
+%, due to the limit of painting skills of non-expert users. 
 
 \begin{figure}[htbp]
     \center
