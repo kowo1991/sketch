@@ -15,20 +15,20 @@ Many approaches have been proposed for sketch recognition~\cite{Eitz2012HowDH, L
 
 
 %%%  Characteristic of freehand sketch
-While been drawn on 2D devices, freehand sketches can be naturally considered as a special type of digital images.
-However, their unique characteristics make sketch recognition greatly different from natural image classification.
+%While been drawn on 2D devices, freehand sketches can be naturally considered as a special type of digital images.
+Freehand sketch possesses following unique characteristics, which make sketch recognition a challenging task, which is greatly different from natural image classification.
 %
-Sketch is a very brief representation without any color or texture details.
-Firstly, freahand sketches present a huge diversity among different users, even for the same object.
+First, a sketch only contains extremely \textbf{sparse visual signals} as it is a very brief representation without any color or texture signals.
+A large portion of pixels within a sketch image are blank.
 %
-Because shape is the only hint that can be extracted from sketches, sketch recognition severely suffers from shape distortions, which vary drastically from non-experts users to professional artists.
-Moreover, the level of details is in a wide range, which makes the sketch recognition significantly challenging.
+Second, freehand sketches present large \textbf{intra-class variance} as sketches for the same object drawn by different users are extremely diverse.
+The degree of shape distortions varies drastically from average users to professional artists. 
+%Because shape is the only hint that can be extracted from sketches, sketch recognition severely suffers from 
+%Moreover, the level of details is in a wide range, which makes the sketch recognition significantly challenging.
 %
-Secondly, sketches are much \emph{sparser} than natural images.
-From the perspective of pixel array, a large portion of pixels in a sketch image are blank.
-% Images contains richer information such as texture and dilation.
-Thirdly, the stroke pattern is also carried in the order, of which the strokes are drawn in a sketch. As claimed in previous research~\cite{Eitz2012HowDH}, sketches are typically drawn in a coarse-to-fine strategy. Details are usually added to the sketch later with short strokes.
-Therefore, designing the technique for sketch classification should take the sparsity and temporal information into account.
+Third, the order of which the strokes are drawn in a sketch matters a lot, and thus provides \textbf{temporal context} for sketch recognition.
+As claimed in previous research~\cite{Eitz2012HowDH}, sketches are typically drawn in a coarse-to-fine strategy. Details are usually added to the sketch later with short strokes.
+Therefore, designing the technique for sketch classification should take the sparsity and temporal context into account.
 
 
 
@@ -44,34 +44,37 @@ These approaches achieved good performance on handwritten symbols, which are sim
 Eitz et al. \cite{Eitz2012HowDH} comprehensively analyzed the way of how human draw sketches, and published the TU-Berlin benchmark, a large dataset including 20000 sketches of 250 categories of objects. 
 This dataset is significantly challenging, and humans only achieve a $73.1\%$ recognition accuracy.
 %
-They extracted HOG features from sketches and used a support vector machine (SVM) for classification.
+They extracted HOG features and used a support vector machine (SVM) for classification.
 Other methods~\cite{LiHSG15, Schneider2014SketchCA} also extract hand-crafted features and use SVM classifiers.
 However, for common objects, the representation capability of hand-crafted features is highly limited.
 
  
 %%%%%% Deep learning methods
 
-\para{DNN-based sketch recognition.}
-With the great success of deep neural networks (DNN) in natural image recognition, convolutional networks (CNN) were recently applied to the sketch classification problem.
-%
-While they convert freehand sketches into 2D images, Sketch-a-Net~\cite{Yu2015SketchaNetTB} and DeepSketch~\cite{Seddati2015DeepSketchDC} both use ConvNets to extract features and achieves state-of-the-art performance on the challenging TU-Berlin benchmark.
-%
-Compared with the deep networks for natural images, they have larger convolutional kernels and less convolutional layers.
+\para{CNN-based sketch recognition.}
+With the great success of deep neural network (DNN) in natural image recognition, convolutional neural networks (CNN) have been applied to sketch recognition.
+%While they convert freehand sketches into 2D images,
+A certain number of existing approaches, such as Sketch-a-Net~\cite{Yu2015SketchaNetTB} and DeepSketch~\cite{Seddati2015DeepSketchDC}, 
+straightforwardly convert freehand sketches into 2D images and exploit CNN to extract features for recognition from sketch images. 
+These CNN-based approaches achieve state-of-the-art performance on the challenging TU-Berlin benchmark.
+%Compared to the deep networks for natural images, they have larger convolutional kernels and less convolutional layers.
 %Although Sketch-a-Net \cite{Yu2015SketchaNetTB} and DeepSketch \cite{Seddati2015DeepSketchDC} achieve higher recognition accuracy than traditional methods.
-However, treating a sketch as a full pixel array, these ConvNets still require a large amount of network parameters for the convolutional kernels.
-The sparsity of sketches is not fully utilized.
+However, regarding sketches as 2D pixel array, these CNN-based approaches require a large amount of network parameters to be learned.
+%
+As mentioned above, compared to natural images, freehand sketches are very sparse in 2D space. The data sparsity could greatly improve the network compactness. 
+Therefore, we adopt point-based DNN to design a compact network. 
 
 %%%%%%%%% Point-based deep networks
-\para{Point-based DNNs.} Compared with ConvNet, a brand-new concept, which directly takes the discrete points as input, is presented for the point cloud processing~\cite{qi2017pointnet, qi2017pointnetplusplus, 1801.07791}.
-These point-based networks significantly reduce the model space and computational complexity.
+\para{Point-based DNNs.} Compared to CNN, the brand-new concept, which directly takes the discrete points as input, has been presented for point cloud processing recently~\cite{qi2017pointnet, qi2017pointnetplusplus, 1801.07791}.
+The point-based DNN significantly reduces the model space and computational complexity.
 %
-PointNet~\cite{qi2017pointnet} presents the first deep network that directly consumes points for many applications of point clouds.
-It subsequent version, PointNet++~\cite{qi2017pointnetplusplus} uses a hierarchical architecture to extract features from 3D point clouds for more robust recognition and segmentation.
+PointNet~\cite{qi2017pointnet} presented the first deep network that directly consumes points for many applications of point clouds.
+Its subsequent version, PointNet++~\cite{qi2017pointnetplusplus} used a hierarchical architecture to extract features from 3D point clouds for more robust recognition and segmentation.
 %
 Li et al.~\cite{1801.07791} proposed a $\chi$-transformation to permute unordered points into a latent potentially canonical order for feature learning.
-%One of the most time-consuming step is that they have to use multilayer perceptron on the whole local points.
-%have been greatly developed, which provides possibilities of point-based sketch recognition.
-However, these networks consider only spatial pattern over the point clouds, while temporal pattern also plays an important role in sketch recognition.
+While point-based networks were designed for point sets, they only exploits the spatial pattern. 
+In addition to spatial patterns, sketches contain temporal context, which is another important hint for recognition. 
+ %These networks consider only spatial pattern over the point clouds, while temporal pattern also plays an important role in sketch recognition.
 
 
 
