@@ -11,12 +11,12 @@
 
 
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-\usepackage{algpseudocode}
+%\usepackage{algpseudocode}
 \usepackage{amsmath}
 
 \usepackage{color}
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 
 
@@ -71,16 +71,8 @@
 \maketitle
 %
 \begin{abstract}
-Sketch recognition has been studied for many years.
-With the great success of deep networks on image recognition, we propose a novel point-based network, named SketchPointNet, which is both robust and compact for sketch recognition.
-%
-Sketch features are hierarchically learned from three mini PointNets, by successively grouping 2D points in a bottom-up fashion.
-%
-Our SketchPointNet takes both temporal and spatial information in strokes into account during point sampling and grouping.
-%
-Because it directly consumes the sparse points, our SketchPointNet is very compact and efficient.
-%
-Compared with state-of-the-art techniques, SketchPointNet achieves comparable performance on the challenging TU-Berlin dataset while significantly reduces the number of network parameters.
+Sketch recognition is a challenging image processing task. In this paper, we propose a novel point-based network with a compact architecture, named SketchPointNet, for robust sketch recognition. Sketch features are hierarchically learned from three mini PointNets, by successively sampling and grouping 2D points in a bottom-up fashion. SketchPointNet exploits both temporal and spatial context in strokes during point sampling and grouping. 
+By directly consuming the sparse points, SketchPointNet is very compact and efficient. Compared with state-of-the-art techniques, SketchPointNet achieves comparable performance on the challenging TU-Berlin dataset while it significantly reduces the network size.
 
 
 \end{abstract}

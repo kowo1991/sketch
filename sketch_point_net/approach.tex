@@ -8,7 +8,7 @@ In this section, we will first introduce the network architecture of our SketchP
 
 %\subsection{Architecture of SketchPointNet}
 %\label{ssec:sketch_point_net}
-%\vspace{0.15cm}
+\vspace{0.1cm}
 \para{Architecture of SketchPointNet.}
 Fig.~\ref{fig:sketchpointnet} shows the architecture of our SketchPointNet.
 %
@@ -34,7 +34,7 @@ During our sampling and grouping, the temporal and spatial information is integr
 
 %\subsection{Point Sampling}
 %\label{ssec:resample}
-%\vspace{0.15cm}
+\vspace{0.1cm}
 \para{Point sampling.}
 %% key concept of resampling is to preserve local temporal and spatial relations
 To make various sketches comparable, we sample $N_{pt}$ equidistantly spaced points along strokes.
@@ -59,7 +59,7 @@ We can see that the main structure is well preserved during the sampling procedu
 
 %\subsection{Point Grouping}
 %\label{ssec:group_scheme}
-%\vspace{0.15cm}
+\vspace{0.1cm}
 \para{Point grouping.}
 To extract features of the input sketch, we group a set of points on the strokes and feed them into a mini PointNet, which is flexible with the number of input points.
 %
@@ -91,7 +91,7 @@ By sampling points along strokes, both temporal and spatial patterns are preserv
 \end{figure}
 %\subsection{Group Pattern Extraction}
 
-%\vspace{0.15cm}
+\vspace{0.1cm}
 \para{Pattern extraction.}
 %
 We use a modified version of the PointNet~\cite{qi2017pointnet} to extract the sketch pattern in a local region that contains various number of points.
@@ -128,7 +128,7 @@ For the second PointNet PN-2, the input is the $K_{g2} \times C^2_{in}$ data, wh
 %
 The output of PN-2 is a $C^2_{out}$-D feature vector for each group.
 
-%\vspace{0.15cm}
+\vspace{0.1cm}
 \para{Sketch classification.}
 %\label{ssec:classification}
 After the two-level local pattern extraction, we feed the $N_{g2} \times C^2_{out}$ data into the third mini PointNet PN-3, which produces $C^{3}_{out}=N_{class}$ dimensional vector as the predicted scores for the $N_{class}$ categories.
