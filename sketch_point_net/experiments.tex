@@ -21,7 +21,7 @@ Our SketchPointNet, which is composed of all fully-connected layers, can be trai
 For the multilayer perceptrons in the entire network, we use parameters mlp(8,16,64), mlp(64,16,2) in PN-1, mlp(32,32,128), mlp(128,64,29) in PN-2, mlp(64,128,1024), mlp(512,256,250) in PN-3.
 %
 However, the entire network is easily converged to a local optima and suffers from over-fitting.
-Moreover, the third PointNet PN-3 plays a different role from PN-1 and PN-2. It captures more global pattern for classification.
+Moreover, the third PointNet PN-3 plays a different role from PN-1 and PN-2. It captures more global patterns for classification.
 %
 The network parameters are densely distributed in PN-3, which tends to converge on the training set without sufficient training for PN-1 and PN-2.
 
@@ -34,7 +34,7 @@ In the first step, we randomly initialize all the parameters in the SketchPointN
 %
 In the second step, we initialize the first two mini PointNets PN-1 and PN-2 for local pattern extraction with the parameters obtained in the first step, and randomly initialize the parameters in the third mini PointNet PN-3. Then we retrain the entire network.
 %
-In the third step, repeat the second step for three times.
+In the third step, the second step is repeated for three times.
 %
 Table ~\ref{tbl:iteration} shows the improvement of recognition accuracy with our three-step training strategy.
 %, we can see that the recognition results on evaluation dataset are getting higher and higher after numbers of iterations of training. It shows that our training strategy is effective.
@@ -73,7 +73,7 @@ As shown, our algorithm achieves comparable performance $74.22\%$ with image-bas
 %
 Compared to the vanilla version without any fusion part, our SketchPointNet achieves higher performance than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB}, and comparable results with DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
 However, as designed, our SketchPointNet is very compact by using lots of shared weights.
-Ours has about $5$ times less parameters than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB} and $30$ times less parameters than DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
+It has about $5$ times less parameters than Sketch-a-Net~(vanilla)~\cite{Yu2015SketchaNetTB} and $30$ times less parameters than DeepSketch 1~\cite{Seddati2015DeepSketchDC}.
 %
 %The models having the highest recognition accuracy ($77.95\%$ for Sketch-a-Net~\cite{Yu2015SketchaNetTB}, and $77.69\%$ for DeepSketch %2~\cite{Dupont2016DeepSketch2D}) both employ a complex fusion step, which makes their network significantly larger.
 %
@@ -140,7 +140,7 @@ Fig.~\ref{fig:resshow} shows two groups of examples.
 In the top row, the three examples are correctly recognized as their ground-truth categories.
 Compared to PointNet, which investigates critical points for each class, our SketchPointNet extracts critical patterns for each category.
 %
-Take the first sketch as example, the head part is recognized as a panda, though its pose is more like an human. Similarly, SketchPointNet recognizes the second sketch as tiger mainly from the head part and the stripes on its body.
+Take the first sketch as example, the head part is recognized as a panda, though its pose is more like a human. Similarly, SketchPointNet recognizes the second sketch as tiger mainly from the head part and the stripes on its body.
 %
 Although our network can handle some challenging cases, there are still some challenging cases.
 As the bottom row in Fig.~\ref{fig:resshow} shows, the sketches are extremely ambiguous cases.

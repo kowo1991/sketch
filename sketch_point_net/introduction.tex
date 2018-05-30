@@ -16,7 +16,8 @@ Many approaches have been proposed for sketch recognition~\cite{Eitz2012HowDH, L
 
 %%%  Characteristic of freehand sketch
 %While been drawn on 2D devices, freehand sketches can be naturally considered as a special type of digital images.
-Freehand sketch possesses following unique characteristics, which make sketch recognition a challenging task, which is greatly different from natural image classification.
+Freehand sketch possesses following unique characteristics, which make sketch recognition a challenging task. 
+%which is greatly different from natural image classification.
 %
 First, a sketch only contains extremely sparse visual signals as it is a very brief representation without any color or texture signals.
 A large portion of pixels within a sketch image are blank.
@@ -27,7 +28,7 @@ The degree of shape distortions varies drastically from average users to profess
 %Moreover, the level of details is in a wide range, which makes the sketch recognition significantly challenging.
 %
 Third, the order of which the strokes are drawn in a sketch matters a lot, and thus provides temporal context for sketch recognition.
-As claimed in previous research~\cite{Eitz2012HowDH}, sketches are typically drawn in a coarse-to-fine strategy. 
+As claimed in previous research~\cite{Eitz2012HowDH}, sketches are typically drawn in a coarse-to-fine strategy.
 Details are usually added to the sketch later with short strokes.
 Therefore, designing the technique for sketch classification should take the sparsity and temporal context into account.
 
@@ -46,7 +47,7 @@ Eitz et al. \cite{Eitz2012HowDH} comprehensively analyzed the way of how human d
 This dataset is significantly challenging, and humans only achieve a $73.1\%$ recognition accuracy.
 %
 They extracted HOG features and used a support vector machine (SVM) for classification.
-Other methods~\cite{LiHSG15, Schneider2014SketchCA} also extract hand-crafted features and use SVM classifiers.
+Other methods~\cite{LiHSG15, Schneider2014SketchCA} also extracted hand-crafted features and used SVM classifiers.
 However, for common objects, the representation capability of hand-crafted features is highly limited.
 
 
@@ -73,8 +74,8 @@ PointNet~\cite{qi2017pointnet} presented the first deep network that directly co
 Its subsequent version, PointNet++~\cite{qi2017pointnetplusplus} used a hierarchical architecture to extract features from 3D point clouds for more robust recognition and segmentation.
 %
 Li et al.~\cite{1801.07791} proposed a $\chi$-transformation to permute unordered points into a latent potentially canonical order for feature learning.
-While point-based networks were designed for point sets, they only exploits the spatial pattern.
-In addition to spatial patterns, sketches contain temporal context, which is another important hint for recognition.
+While point-based networks were designed for point sets, they only exploit the spatial pattern.
+In addition to spatial patterns, sketches contain temporal context, which is an another important hint for recognition.
  %These networks consider only spatial pattern over the point clouds, while temporal pattern also plays an important role in sketch recognition.
 
 
